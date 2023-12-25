@@ -15,7 +15,6 @@ index:
   - 御奏者番
 positions:
   - name: 執事職
-    date: 萬治二亥六月廿八日
     list: shitsuji.yml
   - name: 元老
     list: genrou.yml
