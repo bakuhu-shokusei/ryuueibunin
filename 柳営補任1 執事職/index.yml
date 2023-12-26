@@ -37,3 +37,7 @@ positions:
       - 奏者番被仰付闕役、寛文二寅二月廿三日再當役被
       - 仰付、同十戌三月二日ヨリ諸向支配ニ屬ス
     list: 8-wakadoshiyori.yml
+  - name: 高家肝煎
+    list: 9-koukeikimoiri.yml
+  - name: 高家
+    list: 10-koukei.yml
