@@ -24,6 +24,16 @@ positions:
     list: houshorenpan.yml
   - name: 大御留守居
     list: ooorusui.yml
-    note: 右跡役不被仰付、當御役止
+    note:
+      - 右跡役不被仰付、當御役止
   - name: 御近習出頭
     list: kinjushuttounin.yml
+  - name: 御側御用人
+    list: osobagoyounin.yml
+  - name: 若年寄
+    note:
+      - 此御役、寛永八未五月廿一日始而被仰付、慶安四
+      - 卯正月廿日家光公薨御以後、同年六月十三日各御
+      - 奏者番被仰付闕役、寛文二寅二月廿三日再當役被
+      - 仰付、同十戌三月二日ヨリ諸向支配ニ屬ス
+    list: wakadoshiyori.yml
