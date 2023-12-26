@@ -22,3 +22,8 @@ positions:
     list: goseijisousai.yml
   - name: 奉書連判
     list: houshorenpan.yml
+  - name: 大御留守居
+    list: ooorusui.yml
+    note: 右跡役不被仰付、當御役止
+  - name: 御近習出頭
+    list: kinjushuttounin.yml
