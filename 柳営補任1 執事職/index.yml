@@ -41,3 +41,5 @@ positions:
     list: 9-koukeikimoiri.yml
   - name: 高家
     list: 10-koukei.yml
+  - name: 寺社奉行
+    list: 11-jishabugyou.yml
