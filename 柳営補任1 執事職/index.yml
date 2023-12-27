@@ -45,3 +45,6 @@ positions:
     list: 11-jishabugyou.yml
   - name: 奥詰
     list: 12-okudume.yml
+    note: 當御役常憲院樣薨御後相止
+  - name: 御奏者番
+    list: 13-gosoushaban.yml
