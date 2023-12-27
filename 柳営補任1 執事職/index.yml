@@ -43,3 +43,5 @@ positions:
     list: 10-koukei.yml
   - name: 寺社奉行
     list: 11-jishabugyou.yml
+  - name: 奥詰
+    list: 12-okudume.yml
