@@ -33,7 +33,7 @@
       name2: 大留守居
       groups:
         - members: 005-大御留守居.yml
-          ending: 
+          ending:
             - 右跡役不被仰付、當御役止
     - name: 御近習出頭
       name2: 近習出頭
@@ -116,7 +116,7 @@
             - 薨去ニ付一統御免
           members: 018-徳松君御傅.yml
     - name: 徳松君御側
-      name2: 側役 
+      name2: 側役
       groups:
         - members: 019-徳松君御側.yml
     - name: 家千代君御傅
@@ -755,7 +755,7 @@
           ending:
             - 右跡役不被仰付
     - name: 西丸御書院番與頭
-      name: 西丸書院番組頭
+      name2: 西丸書院番組頭
       groups:
         - name: 三番組
           members: 038-西丸書院番組頭-03番組.yml
@@ -810,7 +810,7 @@
     - name: 前六番
       name2: 小性組番頭
       groups:
-        - 040-小性組番頭A-前6番.yml
+        - members: 040-小性組番頭A-前6番.yml
     - name: 組頭
       name2: 小性組組頭
       groups:

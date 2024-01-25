@@ -1,0 +1,17 @@
+// https://shellyln.github.io/tynder/playground.html
+interface Book {
+  book: string;
+  index: string[];
+  positions: {
+    name: string;
+    name2?: string;
+    note?: string[];
+    groups: {
+      name?: string;
+      members: string;
+      note?: string[];
+      opening?: string[];
+      ending?: string[];
+    }[];
+  }[];
+}
