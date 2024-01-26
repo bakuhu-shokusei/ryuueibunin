@@ -1,1 +1,1 @@
-fd -t file -e yml -x yq -i
+fd index -t file -e yml -x yq -i

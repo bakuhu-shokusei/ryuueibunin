@@ -796,10 +796,11 @@
             - 家光公御小性組番頭前廉之段不分明、
             - 台徳院樣御〔治〕次世二組勤之番頭
           members: 040-小性組番頭A-03.yml
-    - name: 前五番
+    - name: ""
       name2: 小性組番頭
       groups:
-        - members: 040-小性組番頭A-前5番.yml
+        - name: 前五番
+          members: 040-小性組番頭A-前5番.yml
     - name: 組頭
       name2: 小性組組頭
       groups:
@@ -807,20 +808,22 @@
           ending:
             - 慶安四卯年内田信濃守御供切腹ニ付、此組潰
             - ル
-    - name: 前六番
+    - name: ""
       name2: 小性組番頭
       groups:
-        - members: 040-小性組番頭A-前6番.yml
+        - name: 前六番
+          members: 040-小性組番頭A-前6番.yml
     - name: 組頭
       name2: 小性組組頭
       groups:
         - members: 041-小性組組頭A-02.yml
           ending:
             - 右組西丸え被爲進、御書院番ニ成ル
-    - name: 八番
+    - name: ""
       name2: 小性組番頭
       groups:
-        - members: 040-小性組番頭A-8番.yml
+        - name: 八番
+          members: 040-小性組番頭A-8番.yml
     - name: 組頭
       name2: 小性組組頭
       groups:
@@ -934,10 +937,11 @@
           members: 040-小性組番頭B-同10番組.yml
           ending:
             - 右跡役不被仰付、組御番衆奧詰銃隊被仰付候事
-    - name: 同西丸四番組
+    - name: ""
       name2: 西丸小性組番頭
       groups:
-        - opening:
+        - name: 同西丸四番組
+          opening:
             - 慶安三寅年九月西丸御移徙ニ付新規被仰付
           members: 042-西丸小性組番頭-4番組.yml
           ending:
@@ -978,3 +982,13 @@
           ending:
             - 右肥前守四番え組替後跡役不被仰付、組頭も
             - 四番え加人、御番衆ハ惣組え割入
+        - name: 二番組
+          members: 044-大納言附小性組番頭-2番組.yml
+          ending:
+            - 右和泉守二番え組替跡役不被仰付、組頭二番
+            - え加人、御番衆ハ惣組え割入
+    - name: 御小性組番頭格式
+      name2: 小性組番頭格式
+      note: 奧勤
+      groups:
+        - members: 045-小性組番頭格式.yml
