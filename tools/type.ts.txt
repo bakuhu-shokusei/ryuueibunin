@@ -6,6 +6,8 @@ interface Book {
     name: string;
     name2?: string;
     note?: string[];
+    opening?: string[];
+    ending?: string[];
     groups: {
       name?: string;
       members: string;

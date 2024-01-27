@@ -20,6 +20,6 @@ for (const book of books) {
   if (!valid) {
     console.log(book.book, validate.errors)
   } else {
-    console.log('OK!')
+    console.log(book.book, 'OK!')
   }
 }

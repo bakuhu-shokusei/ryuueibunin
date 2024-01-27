@@ -27,6 +27,18 @@
               "type": "string"
             }
           },
+          "opening": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "ending": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
           "groups": {
             "type": "array",
             "items": {
