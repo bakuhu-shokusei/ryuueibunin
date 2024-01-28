@@ -1,0 +1,22 @@
+{
+  "type": "object",
+  "properties": {
+    "page": {
+      "type": "number"
+    },
+    "note": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "info": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": ["page", "info"],
+  "additionalProperties": false
+}

@@ -17,3 +17,9 @@ interface Book {
     }[];
   }[];
 }
+
+interface Member {
+  page: number;
+  note?: string[];
+  info: string[];
+}
