@@ -425,106 +425,154 @@
             - 辰戌二絛
             - 白地黒紋
           members: 030-大御番頭B-同12番組.yml
-    - name: 大御番一番組與頭
+    - name: ""
       name2: 大番組頭
       groups:
-        - members: 031-大御番01番組與頭-01.yml
-        - members: 031-大御番01番組與頭-02.yml
-        - members: 031-大御番01番組與頭-03.yml
-        - members: 031-大御番01番組與頭-04.yml
-    - name: 同二番組與頭
+        - name: 一番組與頭
+          members: 031-大御番01番組與頭-01.yml
+        - name: 一番組與頭
+          members: 031-大御番01番組與頭-02.yml
+        - name: 一番組與頭
+          members: 031-大御番01番組與頭-03.yml
+        - name: 一番組與頭
+          members: 031-大御番01番組與頭-04.yml
+    - name: ""
       name2: 大番組頭
       groups:
-        - members: 031-大御番同02番組與頭-01.yml
-        - members: 031-大御番同02番組與頭-02.yml
-        - members: 031-大御番同02番組與頭-03.yml
-        - members: 031-大御番同02番組與頭-04.yml
-    - name: 同三番組與頭
+        - name: 二番組與頭
+          members: 031-大御番同02番組與頭-01.yml
+        - name: 二番組與頭
+          members: 031-大御番同02番組與頭-02.yml
+        - name: 二番組與頭
+          members: 031-大御番同02番組與頭-03.yml
+        - name: 二番組與頭
+          members: 031-大御番同02番組與頭-04.yml
+    - name: ""
       name2: 大番組頭
       groups:
-        - members: 031-大御番同03番組與頭-01.yml
-        - members: 031-大御番同03番組與頭-02.yml
-        - members: 031-大御番同03番組與頭-03.yml
-        - members: 031-大御番同03番組與頭-04.yml
-    - name: 同四番組與頭
+        - name: 三番組與頭
+          members: 031-大御番同03番組與頭-01.yml
+        - name: 三番組與頭
+          members: 031-大御番同03番組與頭-02.yml
+        - name: 三番組與頭
+          members: 031-大御番同03番組與頭-03.yml
+        - name: 三番組與頭
+          members: 031-大御番同03番組與頭-04.yml
+    - name: ""
       name2: 大番組頭
       groups:
-        - members: 031-大御番同04番組與頭-01.yml
-        - members: 031-大御番同04番組與頭-02.yml
-        - members: 031-大御番同04番組與頭-03.yml
-        - members: 031-大御番同04番組與頭-04.yml
-    - name: 同五番組與頭
+        - name: 四番組與頭
+          members: 031-大御番同04番組與頭-01.yml
+        - name: 四番組與頭
+          members: 031-大御番同04番組與頭-02.yml
+        - name: 四番組與頭
+          members: 031-大御番同04番組與頭-03.yml
+        - name: 四番組與頭
+          members: 031-大御番同04番組與頭-04.yml
+    - name: ""
       name2: 大番組頭
       groups:
-        - members: 031-大御番同05番組與頭-01.yml
+        - name: 五番組與頭
+          members: 031-大御番同05番組與頭-01.yml
           ending:
             - 此組潰レ、跡役不被仰付
-        - members: 031-大御番同05番組與頭-02.yml
+        - name: 五番組與頭
+          members: 031-大御番同05番組與頭-02.yml
           ending:
             - 此組潰レ、跡役不被仰付
-        - members: 031-大御番同05番組與頭-03.yml
+        - name: 五番組與頭
+          members: 031-大御番同05番組與頭-03.yml
           ending:
             - 此組潰レ、跡役不被仰付候事
-        - members: 031-大御番同05番組與頭-04.yml
+        - name: 五番組與頭
+          members: 031-大御番同05番組與頭-04.yml
           ending:
             - 此組潰レ、跡役不被仰付
-    - name: 同六番組與頭
+    - name: ""
       name2: 大番組頭
       groups:
-        - members: 031-大御番同06番組與頭-01.yml
-        - members: 031-大御番同06番組與頭-02.yml
-        - members: 031-大御番同06番組與頭-03.yml
-        - members: 031-大御番同06番組與頭-04.yml
-    - name: 同七番組與頭
+        - name: 六番組與頭
+          members: 031-大御番同06番組與頭-01.yml
+        - name: 六番組與頭
+          members: 031-大御番同06番組與頭-02.yml
+        - name: 六番組與頭
+          members: 031-大御番同06番組與頭-03.yml
+        - name: 六番組與頭
+          members: 031-大御番同06番組與頭-04.yml
+    - name: ""
       name2: 大番組頭
       groups:
-        - members: 031-大御番同07番組與頭-01.yml
-        - members: 031-大御番同07番組與頭-02.yml
-        - members: 031-大御番同07番組與頭-03.yml
-        - members: 031-大御番同07番組與頭-04.yml
-    - name: 同八番組與頭
+        - name: 七番組與頭
+          members: 031-大御番同07番組與頭-01.yml
+        - name: 七番組與頭
+          members: 031-大御番同07番組與頭-02.yml
+        - name: 七番組與頭
+          members: 031-大御番同07番組與頭-03.yml
+        - name: 七番組與頭
+          members: 031-大御番同07番組與頭-04.yml
+    - name: ""
       name2: 大番組頭
       groups:
-        - members: 031-大御番同08番組與頭-01.yml
+        - name: 八番組與頭
+          members: 031-大御番同08番組與頭-01.yml
           ending:
             - 此組潰、跡役不被仰付候事
-        - members: 031-大御番同08番組與頭-02.yml
+        - name: 八番組與頭
+          members: 031-大御番同08番組與頭-02.yml
           ending:
             - 此組潰、跡役不被仰付
-        - members: 031-大御番同08番組與頭-03.yml
+        - name: 八番組與頭
+          members: 031-大御番同08番組與頭-03.yml
           ending:
             - 此組潰レ、跡役不被仰付
-        - members: 031-大御番同08番組與頭-04.yml
+        - name: 八番組與頭
+          members: 031-大御番同08番組與頭-04.yml
           ending:
             - 此組潰レ、跡役不被仰付
-    - name: 同九番組與頭
+    - name: ""
       name2: 大番組頭
       groups:
-        - members: 031-大御番同09番組與頭-01.yml
-        - members: 031-大御番同09番組與頭-02.yml
-        - members: 031-大御番同09番組與頭-03.yml
-        - members: 031-大御番同09番組與頭-04.yml
-    - name: 同十番組與頭
+        - name: 九番組與頭
+          members: 031-大御番同09番組與頭-01.yml
+        - name: 九番組與頭
+          members: 031-大御番同09番組與頭-02.yml
+        - name: 九番組與頭
+          members: 031-大御番同09番組與頭-03.yml
+        - name: 九番組與頭
+          members: 031-大御番同09番組與頭-04.yml
+    - name: ""
       name2: 大番組頭
       groups:
-        - members: 031-大御番同10番組與頭-01.yml
-        - members: 031-大御番同10番組與頭-02.yml
-        - members: 031-大御番同10番組與頭-03.yml
-        - members: 031-大御番同10番組與頭-04.yml
-    - name: 同十一番組與頭
+        - name: 十番組與頭
+          members: 031-大御番同10番組與頭-01.yml
+        - name: 十番組與頭
+          members: 031-大御番同10番組與頭-02.yml
+        - name: 十番組與頭
+          members: 031-大御番同10番組與頭-03.yml
+        - name: 十番組與頭
+          members: 031-大御番同10番組與頭-04.yml
+    - name: ""
       name2: 大番組頭
       groups:
-        - members: 031-大御番同11番組與頭-01.yml
-        - members: 031-大御番同11番組與頭-02.yml
-        - members: 031-大御番同11番組與頭-03.yml
-        - members: 031-大御番同11番組與頭-04.yml
-    - name: 同十二番組與頭
+        - name: 十一番組與頭
+          members: 031-大御番同11番組與頭-01.yml
+        - name: 十一番組與頭
+          members: 031-大御番同11番組與頭-02.yml
+        - name: 十一番組與頭
+          members: 031-大御番同11番組與頭-03.yml
+        - name: 十一番組與頭
+          members: 031-大御番同11番組與頭-04.yml
+    - name: ""
       name2: 大番組頭
       groups:
-        - members: 031-大御番同12番組與頭-01.yml
-        - members: 031-大御番同12番組與頭-02.yml
-        - members: 031-大御番同12番組與頭-03.yml
-        - members: 031-大御番同12番組與頭-04.yml
+        - name: 十二番組與頭
+          members: 031-大御番同12番組與頭-01.yml
+        - name: 十二番組與頭
+          members: 031-大御番同12番組與頭-02.yml
+        - name: 十二番組與頭
+          members: 031-大御番同12番組與頭-03.yml
+        - name: 十二番組與頭
+          members: 031-大御番同12番組與頭-04.yml
 - book: 卷之四
   index:
     - 御書院番頭
