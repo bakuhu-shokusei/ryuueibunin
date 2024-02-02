@@ -7,12 +7,14 @@ interface Book {
     name2?: string;
     note?: string[];
     opening?: string[];
+    opening2?: string[];
     ending?: string[];
     groups: {
       name?: string;
       members: string;
       note?: string[];
       opening?: string[];
+      opening2?: string[];
       ending?: string[];
     }[];
   }[];

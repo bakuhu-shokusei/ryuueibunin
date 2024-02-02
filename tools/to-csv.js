@@ -43,11 +43,13 @@ function writePositions(record) {
       { key: 'name2', header: '職名2' },
       { key: 'note', header: '職名-補足説明1' },
       { key: 'opening', header: '職名-補足説明2' },
-      { key: 'ending', header: '職名-補足説明3' },
+      { key: 'opening2', header: '職名-補足説明3' },
+      { key: 'ending', header: '職名-補足説明4' },
       { key: 'groupName', header: '組' },
       { key: 'groupNote', header: '組-補足説明1' },
       { key: 'groupOpening', header: '組-補足説明2' },
-      { key: 'groupEnding', header: '組-補足説明3' },
+      { key: 'groupOpening2', header: '組-補足説明3' },
+      { key: 'groupEnding', header: '組-補足説明4' },
       { key: 'page', header: 'ページ' },
     ],
   })
@@ -94,6 +96,7 @@ function convert() {
         name2: position.name2 || position.name,
         note: (position.note || []).join('\n'),
         opening: (position.opening || []).join('\n'),
+        opening2: (position.opening2 || []).join('\n'),
         ending: (position.ending || []).join('\n'),
       }
       for (const group of position.groups) {
@@ -105,6 +108,7 @@ function convert() {
           groupName: group.name,
           groupNote: (group.note || []).join('\n'),
           groupOpening: (group.opening || []).join('\n'),
+          groupOpening2: (group.opening2 || []).join('\n'),
           groupEnding: (group.ending || []).join('\n'),
           page: members[0].page + '-' + members[members.length - 1].page,
         }
