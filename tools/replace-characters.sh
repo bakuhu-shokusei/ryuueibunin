@@ -9,4 +9,5 @@ git diff --name-only --cached | xargs -i \
   -e "s|江組替|え組替|g" \
   -e "s|逼寒|逼塞|g" \
   -e "s|伯.守|伯耆守|g" \
+  -e "s|〓女$|采女|g" \
   {}
