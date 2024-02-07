@@ -1538,7 +1538,7 @@
         - note:
             - 元六番
             - 黒地
-          members: 071-西丸新番頭-01.yml
+          members: 071-西丸新番頭A-01.yml
           ending:
             - 寳暦十一巳六月大御所樣薨御ニ付同八月三日
             - 轉役、組頭小普請入、組御本丸六番え割入、
@@ -1546,4 +1546,88 @@
         - name: 貳番組
           note:
             - 花色白日町交
-          members: 071-西丸新番頭-02.yml
+          members: 071-西丸新番頭A-02.yml
+          ending:
+            - 右組一番組同斷ニ付潰
+    - name: 西丸新御番頭
+      name2: 西丸新番頭
+      groups:
+        - note:
+            - 黒地
+          members: 071-西丸新番頭B-01.yml
+          ending:
+            - 孝恭院樣薨御ニ付式部轉役跡不被仰付、御本
+            - 丸六番え割入
+        - name: 貳番組
+          members: 071-西丸新番頭B-02.yml
+          ending:
+            - 一番組同斷
+    - name: 西丸新御番頭
+      name2: 西丸新番頭
+      groups:
+        - members: 071-西丸新番頭C-01.yml
+          ending:
+            - 右跡不被仰付、此組潰
+        - name: 二番組
+          members: 071-西丸新番頭C-02.yml
+          ending:
+            - 右前同斷
+    - name: 新御番頭
+      name2: 新番頭
+      note:
+        - 古四番西丸ニ而貳番
+      groups:
+        - name: 潰組
+          members: 070-新番頭B.yml
+          ending:
+            - 右松平權之助轉役后跡不被仰付
+    - name: 西丸新御番頭
+      name2: 西丸新番頭
+      groups:
+        - name: 一番組
+          note:
+            - 黒地
+          opening:
+            - 寛政九巳三月八日新規貮組被仰付、若君樣御
+            - 附、天保八酉四月二日内府樣御本丸御移徃ニ
+            - 付、即日大御所樣御附、同十二丑閏正月薨御
+            - ニ付、同年三月廿三日右大將樣御附、嘉永六
+            - 丑九月廿七日上樣御本丸御移徙之節組共被召
+            - 連、御移徙迄只今迄之通可相勤旨被仰渡、十
+            - 月廿一日被召連
+          members: 071-西丸新番頭D-01.yml
+          ending:
+            - 右跡役不被仰付、組一同奥詰銃隊被仰付候事
+        - name: 二番組
+          note:
+            - 右同斷
+            - 花白田町交
+          members: 071-西丸新番頭D-02.yml
+          ending:
+            - 右跡役不被仰付、組一同奥詰銃隊被仰付候事
+    - name: 新番頭格式
+      note:
+        - 奧勤
+      groups:
+        - members: 072-新番頭格式.yml
+    - name: 新番頭格
+      note:
+        - 奧え不入
+      groups:
+        - members: 073-新番頭格.yml
+    - name: 新御番組頭
+      name2: 新番組頭
+      groups:
+        - name: 一番組
+          note:
+            - 元二番
+            - 享保九辰十一月十五日ヨリ一番
+          members: 074-新番組頭-01.yml
+        - name: 二番組
+          note:
+            - 元三番
+          members: 074-新番組頭-02.yml
+        - name: 三番組
+          note:
+            - 元五番
+          members: 074-新番組頭-03.yml
