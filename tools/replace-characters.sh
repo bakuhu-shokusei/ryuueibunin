@@ -11,4 +11,6 @@ git diff --name-only --cached | xargs -i \
   -e "s|伯.守|伯耆守|g" \
   -e "s|〓女$|采女|g" \
   -e "s|江割入|え割入|g" \
+  -e "s|見〓|見𢌞|g" \
+  -e "s|支〓$|支配|g" \
   {}
