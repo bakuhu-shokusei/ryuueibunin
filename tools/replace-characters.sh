@@ -1,3 +1,4 @@
+export LANG=ja_JP.UTF-8
 git diff --name-only --cached | xargs -i \
   sed -i \
   -e "s/曰/日/g" \
@@ -14,4 +15,5 @@ git diff --name-only --cached | xargs -i \
   -e "s|見〓|見𢌞|g" \
   -e "s|見廻|見𢌞|g" \
   -e "s|支〓$|支配|g" \
+  -e "s|御〓下|御廊下|g" \
   {}

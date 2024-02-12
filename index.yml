@@ -1843,3 +1843,15 @@
         - 免
       groups:
         - members: 087-廊下番頭.yml
+    - name: 御廊下番組頭
+      name2: 廊下番組頭
+      note:
+        - 番頭同斷
+      groups:
+        - members: 088-廊下番組頭.yml
+    - name: 中奧御小性
+      name2: 中奧小性
+      note:
+        - 番頭同斷
+      groups:
+        - members: 089-中奧小性.yml
