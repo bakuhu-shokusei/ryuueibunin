@@ -16,6 +16,8 @@ git diff --name-only --cached | xargs -i \
   -e "s|見廻|見𢌞|g" \
   -e "s|支〓$|支配|g" \
   -e "s|御〓下|御廊下|g" \
-  -e "s|石兒守|石見守|g"
+  -e "s|石兒守|石見守|g" \
+  -e "s|惣〓|惣領|g" \
+  -E "s#(子|丑|寅|卯|辰|巳|午|未|申|酉|戌|亥)月日#\1 月 日#g" \
   {}
-# fd -e txt -e yml -x sed -i -e "s|石兒守|石見守|g"
+# fd -e txt -e yml -x sed -i -e "s#月 日光#月日光#g" 
