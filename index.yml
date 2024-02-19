@@ -2034,41 +2034,83 @@
             - 與力十騎
             - 同心三十人
           members: 093-先手弓頭-01.yml
-        - name: 弓
-          note:
+        - note:
             - 與力十騎
             - 同心三十人
           members: 093-先手弓頭-02.yml
-        - name: 弓
-          note:
+        - note:
             - 與力六騎
             - 同心三十人
           members: 093-先手弓頭-03.yml
-        - name: 弓
-          note:
+        - note:
             - 割組
             - 與力十騎
             - 同心三十人
           members: 093-先手弓頭-04.yml
-        - name: 弓
-          note:
+        - note:
             - 割組
             - 與力五騎
             - 同心三十人
           members: 093-先手弓頭-05.yml
-        - name: 弓
-          note:
+        - note:
             - 新組
             - 與力拾騎
             - 同心三十人
           members: 093-先手弓頭-06.yml
-        - name: 弓
-          note:
+        - note:
             - 與力十騎
             - 同心三十人
           members: 093-先手弓頭-07.yml
-        - name: 弓
-          note:
+        - note:
             - 與力五騎
             - 同心三十人
           members: 093-先手弓頭-08.yml
+        - note:
+            - 駿河組
+            - 與力十騎
+            - 同心三十人
+          members: 093-先手弓頭-09.yml
+        - note:
+            - 與力十騎
+            - 同心三十人
+          members: 093-先手弓頭-10.yml
+    - name: 御先手鉄炮頭
+      name2: 先手鉄炮頭
+      groups:
+        - note:
+            - 與力十騎
+            - 同心五十人
+          members: 094-先手鉄炮頭-01.yml
+        - note:
+            - 與力六騎
+            - 同心三十人
+          members: 094-先手鉄炮頭-02.yml
+        - note:
+            - 江戸組
+            - 與力十騎
+            - 同心五十人
+          members: 094-先手鉄炮頭-03.yml
+        - note:
+            - 與力五騎
+            - 同心三十人
+          members: 094-先手鉄炮頭-04.yml
+        - note:
+            - 與力十騎
+            - 同心三十人
+          members: 094-先手鉄炮頭-05.yml
+        - note:
+            - 與力七騎
+            - 同心三十人
+          members: 094-先手鉄炮頭-06.yml
+        - note:
+            - 與力五騎
+            - 同心三十人
+          members: 094-先手鉄炮頭-07.yml
+          ending:
+            - 右村越只次郎跡役不被仰付、組與力・同心惣
+            - 組え割込被仰付旨、慶應二丑年四月廿九日被
+            - 仰渡候事
+        - note:
+            - 與力五騎
+            - 同心三十人
+          members: 094-先手鉄炮頭-08.yml
