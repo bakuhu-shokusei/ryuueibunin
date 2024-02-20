@@ -20,6 +20,8 @@ git diff --name-only --cached | xargs -i \
   s#(子|丑|寅|卯|辰|巳|午|未|申|酉|戌|亥)月日#\1 月 日#g
   s|兀祿|元祿|g
   s|廻|𢌞|g
-  /^(曰|日|目|E)$/d
+  s|〓リ|𢌞リ|g
+  s|又政|文政|g
+  /^(曰|日|目|戸|E|ヨ)$/d
   ' {}
-# fd -e txt -e yml -x sed -i -e "s#月 日光#月日光#g" 
+# fd -e txt -e yml -x sed -i -e "s|又政|文政|g" 
