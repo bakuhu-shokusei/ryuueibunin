@@ -22,6 +22,6 @@ git diff --name-only --cached | xargs -i \
   s|廻|𢌞|g
   s|〓リ|𢌞リ|g
   s|又政|文政|g
-  /^(曰|日|目|戸|E|ヨ)$/d
+  /^(曰|日|目|戸|E|ヨ|〓)$/d
   ' {}
 # fd -e txt -e yml -x sed -i -e "s|又政|文政|g" 

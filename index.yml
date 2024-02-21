@@ -1987,7 +1987,7 @@
           members: 092-火消役-15.yml
           ending:
             - 右跡役不被仰付、減切ニ相成候事
-- book: 卷之壹
+- book: 卷之拾
   index:
     - 御先手弓頭
     - 同鉄炮頭
@@ -2161,3 +2161,43 @@
             - 與力五騎
             - 同心三十人
           members: 094-先手鉄炮頭-18.yml
+        - note:
+            - 與力五騎
+            - 同心三十人
+          members: 094-先手鉄炮頭-19.yml
+        - note:
+            - 與力五騎
+            - 同心三十人
+          members: 094-先手鉄炮頭-20.yml
+        - note:
+            - 西丸
+            - 與力六騎
+            - 同心三十人
+          members: 094-先手鉄炮頭-21.yml
+        - note:
+            - 西丸
+            - 與力七騎
+            - 同心三十人
+          members: 094-先手鉄炮頭-22.yml
+        - note:
+            - 西丸
+            - 與力十騎
+            - 同心三十人
+          members: 094-先手鉄炮頭-23.yml
+        - note:
+            - 西丸
+            - 與力五騎
+            - 同心三十人
+          members: 094-先手鉄炮頭-24.yml
+          ending:
+            - 右跡役不被仰付、組與力・同心ハ火附盗賊改
+            - 組ニ成
+    - name: 御先手 過人
+      name2: 先手過人
+      groups:
+        - members: 095-先手過人.yml
+    - name: 御先手次席
+      name2: 先手次席
+      groups:
+        - members: 096-先手次席.yml
+# 柳營補任 乾
