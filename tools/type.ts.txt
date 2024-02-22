@@ -2,6 +2,7 @@
 interface Book {
   book: string;
   index: string[];
+  opening?: string[];
   positions: {
     name: string;
     name2?: string;

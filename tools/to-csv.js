@@ -39,6 +39,7 @@ function writePositions(record) {
     header: true,
     columns: [
       { key: 'book', header: '卷' },
+      { key: 'bookOpening', header: '卷-補足説明1' },
       { key: 'name', header: '職名' },
       { key: 'name2', header: '職名2' },
       { key: 'note', header: '職名-補足説明1' },
@@ -92,6 +93,7 @@ function convert() {
       const recordsMembers = []
       const p = {
         book: book.book,
+        bookOpening: (book.opening || []).join('\n'),
         name: position.name,
         name2: position.name2 || position.name,
         note: (position.note || []).join('\n'),
@@ -103,6 +105,7 @@ function convert() {
         const members = yaml.load(
           readFileSync(resolve(__dirname, '../', group.members))
         )
+        if (members.length === 0) continue
         const g = {
           ...p,
           groupName: group.name,
