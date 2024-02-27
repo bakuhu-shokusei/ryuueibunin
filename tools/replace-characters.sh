@@ -26,6 +26,7 @@ git diff --name-only --cached | xargs -i \
   s|大保|天保|g
   s|被遺|被遣|g
   s|^大明|天明|g
+  s|差和|差扣|g
   /^(曰|日|目|戸|E|ヨ|〓)$/d
   ' {}
-# fd -e txt -e yml -x sed -i -e "s|- 大明|- 天明|g" 
+# fd -e txt -e yml -x sed -i -e "s|差和|差扣|g" 
