@@ -29,6 +29,7 @@ git diff --name-only --cached | xargs -i \
   s|差和|差扣|g
   s|^又化|文化|g
   s|掛(=|〓)$|掛リ|g
+  s|御先毛|御先手|g
   /^(曰|日|目|戸|E|ヨ|〓)$/d
   ' {}
-# fd -e txt -e yml -x sed -i -e "s|^又化|文化|g" 
+# fd -e txt -e yml -x sed -i -e "s|御先毛|御先手|g" 
