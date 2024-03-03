@@ -2619,3 +2619,140 @@
           note:
             - 淺地金紋
           members: 106-小十人頭-10.yml
+        - name: 拾番組 當西丸三番
+          note:
+            - 赤地金紋
+          members: 106-小十人頭-11.yml
+    - name: 西丸小十人頭
+      note:
+        - 新規
+      groups:
+        - members: 107-西丸小十人頭.yml
+          ending:
+            - 寶暦十一巳六月惇信院樣薨御ニ付、同年八月
+            - 三日主膳御徒頭被仰付、兩人之組頭・御番衆
+            - 小普請入
+    - name: 大御所樣 小十人頭
+      name2: 大御所附小十人頭
+      groups:
+        - note:
+            - 貳組
+          members: 108-大御所附小十人頭-01.yml
+          ending:
+            - 寛延四未六月大御所有徳院樣薨御ニ付、組頭
+            - 兩人・御番衆共小普請入
+        - members: 108-大御所附小十人頭-02.yml
+          ending:
+            - 前同斷
+    - name: 西丸小十人頭
+      opening:
+        - 大納言家基公西丸御移徒ニ付新規被仰付、組
+        - 頭は貮番組・三番組より來、御番衆は三番組
+        - 半組來、跡は小普請入御入人
+      groups:
+        - members: 109-西丸小十人頭-01.yml
+          ending:
+            - 安永八亥二月孝恭院樣薨御ニ付、同年四月十
+            - 六日主水寄合入、組頭兩人小普請入、御番衆
+            - 御本丸七番組え割込
+    - name: 西丸小十人頭
+      opening:
+        - 天明元丑閏五月御養君家齊公西丸御移徒ニ
+        - 付、新規被仰付
+      groups:
+        - members: 109-西丸小十人頭-02.yml
+          ending:
+            - 右組御代替ニ付、天明六未十一月廿七日御本
+            - 丸え被召連打込、織部組替後、組頭・御番衆
+            - 惣組え割入ニ成ル
+    - name: 西丸小十人頭
+      note:
+        - 紺地紋白
+      opening:
+        - 享和二成二月廿三日新規被仰付、西丸四組
+        - 成、組頭貮人御本丸ヨリ、御番衆拾貮人御本
+        - 丸、拾三人小普請ヨリ出來ル
+      groups:
+        - members: 109-西丸小十人頭-03.yml
+    - name: 小十人頭
+      name2: 大納言附小十人頭
+      opening:
+        - 大納言樣御附新規貮組被仰付
+      groups:
+        - members: 110-大納言附小十人頭-01.yml
+          ending:
+            - 播磨守退役跡不被仰付、組頭・御番衆惣組え
+            - 割入
+        - note:
+            - 前同斷
+          members: 110-大納言附小十人頭-02.yml
+          ending:
+            - 悌三郎御本丸被仰付跡役不被仰付、組頭・御
+            - 番衆惣組え割入
+    - name: 小十人頭
+      name2: 小十人頭過人
+      note:
+        - 過人組無之
+      groups:
+        - members: 111-小十人頭過人-01.yml
+        - name: 小十人組頭 一番組
+          members: 111-小十人頭過人-02.yml
+        - members: 111-小十人頭過人-03.yml
+        - name: 同貳番組
+          members: 111-小十人頭過人-04.yml
+        - members: 111-小十人頭過人-05.yml
+        - name: 同三番組
+          members: 111-小十人頭過人-06.yml
+        - members: 111-小十人頭過人-07.yml
+        - name: 同四番組
+          members: 111-小十人頭過人-08.yml
+        - members: 111-小十人頭過人-09.yml
+        - name: 同五番組
+          members: 111-小十人頭過人-10.yml
+        - members: 111-小十人頭過人-11.yml
+        - name: 同六番組
+          members: 111-小十人頭過人-12.yml
+        - members: 111-小十人頭過人-13.yml
+        - name: 同七番組
+          members: 111-小十人頭過人-14.yml
+        - members: 111-小十人頭過人-15.yml
+    - name: 西丸小十人組頭
+      groups:
+        - name: 一番組
+          members: 112-西丸小十人組頭-01.yml
+        - members: 112-西丸小十人組頭-02.yml
+        - name: 貳番組
+          members: 112-西丸小十人組頭-03.yml
+        - members: 112-西丸小十人組頭-04.yml
+        - name: 三番組
+          members: 112-西丸小十人組頭-05.yml
+        - members: 112-西丸小十人組頭-06.yml
+        - name: 四番組
+          members: 112-西丸小十人組頭-07.yml
+        - members: 112-西丸小十人組頭-08.yml
+        - members: 112-西丸小十人組頭-09.yml
+        - members: 112-西丸小十人組頭-10.yml
+        - name: 四番組
+          note:
+            - 享保十一午正月廿八日新規
+            - 一組増ス
+          members: 112-西丸小十人組頭-11.yml
+          ending:
+            - 寶暦十一巳八月四日西丸小十人相止、一番ヨ
+            - リ三番迄御本丸え、四番組潰レ、御番衆割組
+            - ニ成ル
+        - members: 112-西丸小十人組頭-12.yml
+        - name: 西丸小十人組頭
+          members: 112-西丸小十人組頭-13.yml
+        - members: 112-西丸小十人組頭-14.yml
+    - name: 小十人組頭
+      name2: 大納言附小十人組頭
+      opening:
+        - 大納言樣御附
+      groups:
+        - members: 113-大納言附小十人組頭-01.yml
+          ending:
+            - 右兩人跡不被仰付
+        - members: 113-大納言附小十人組頭-02.yml
+          ending:
+            - 右兩人跡不被仰付
