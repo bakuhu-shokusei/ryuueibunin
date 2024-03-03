@@ -2481,3 +2481,141 @@
             - 元御本丸九番
             - 嘉永六丑年より御本丸十六番組
           members: 102-西丸徒頭-01.yml
+        - name: 二番組 元八番 前同斷ヨリ十七番組
+          note:
+            - 山道
+          members: 102-西丸徒頭-02.yml
+        - name: 三番組 元御本丸十二番 前同斷ヨリ十八番組
+          note:
+            - 十文字
+          members: 102-西丸徒頭-03.yml
+        - name: 四番組 元十五番組 前同斷ヨリ十九番組
+          note:
+            - 山文字
+          members: 102-西丸徒頭-04.yml
+        - name: 五番組
+          note:
+            - 三角
+          opening:
+            - 元文二巳十二月十五日西丸え新規一組被仰付、
+            - 嘉永六丑九月ヨリ御本丸二十番組
+          members: 102-西丸徒頭-05.yml
+          ending:
+            - 元治元子年十月朔日佐々木脩輔跡不被仰付、組
+            - 御徒ハ惣組え割入相成候事
+        - name: 六番組
+          note:
+            - 分銅
+          opening:
+            - 寶暦十辰四月朔日新規一組被仰付、大御所樣附
+          members: 102-西丸徒頭-06.yml
+          ending:
+            - 惇信院樣薨御ニ付、寶暦十一巳八月御本丸六番
+            - 組え組替成、跡役不被仰付、割組成、組頭兩人
+            - 小普請入
+    - name: 大御所吉宗公御附
+      name2: 吉宗附徒頭
+      groups:
+        - name: 御徒頭
+          note:
+            - 三番組
+          members: 000-empty.yml
+        - name: 一番組
+          members: 103-吉宗附徒頭-01.yml
+          ending:
+            - 有徳院樣薨御ニ付寄合ニ入、跡役不被仰付
+        - name: 二番組
+          members: 103-吉宗附徒頭-02.yml
+          ending:
+            - 薨御ニ付前同斷
+        - name: 三番組
+          members: 103-吉宗附徒頭-03.yml
+          ending:
+            - 薨御ニ付前同斷
+    - name: 右大將家祥公御附
+      name2: 家祥附徒頭
+      groups:
+        - name: 御徒頭
+          note:
+            - 三組
+          opening:
+            - 天保七申九月四日新規御附組被仰付
+          members: 000-empty.yml
+        - name: 一番組
+          members: 104-家祥附徒頭-01.yml
+          ending:
+            - 天保十二丑五月内記轉役後跡役不被仰付、組頭
+            - 始組共割組成
+        - name: 貳番組
+          opening:
+            - 前同斷、天保十二丑五月十五日西丸え被召連
+          members: 104-家祥附徒頭-02.yml
+          ending:
+            - 天保十三寅八月小左衞門退役後跡不被仰付、組
+            - 共割組成
+        - name: 三番組
+          opening:
+            - 前同斷
+          members: 104-家祥附徒頭-03.yml
+          ending:
+            - 天保十三寅九月孫次郎組替後跡不被仰付、組共
+            - 割組成
+    - name: 御徒頭
+      name2: 徒頭
+      note:
+        - 組無之
+      groups:
+        - members: 105-徒頭.yml
+- book: 卷之拾四
+  index:
+    - 小十人頭
+    - 同組頭
+  positions:
+    - name: 小十人頭
+      groups:
+        - members: 106-小十人頭-01.yml
+          ending:
+            - 右組割組成
+            - 一組中指物四半紋出シ思々御貸具足
+            - 一一組與頭兩人、御番衆貮拾人宛
+            - 一元御役料五百俵、天和二戌四月廿一日御役料五
+            - 百俵、地方直御加増被成下、享保八卯六月十八
+            - 日より千石高定ル
+        - name: 一番組
+          note:
+            - 赤地白紋
+          members: 106-小十人頭-02.yml
+        - name: 二番組
+          note:
+            - 紺地金紋
+          members: 106-小十人頭-03.yml
+          ending:
+            - 右跡役不被仰付、組御番衆奧詰銃隊被仰付候事
+        - name: 三番組 元五番
+          note:
+            - 白地紋赤
+          members: 106-小十人頭-04.yml
+        - name: 四番組 元六番
+          note:
+            - 黒地赤紋
+          members: 106-小十人頭-05.yml
+        - name: 同五番組 元七番
+          note:
+            - 白地(日町)?交
+          members: 106-小十人頭-06.yml
+        - name: 六番組 元九番
+          note:
+            - 黒地紋白
+          members: 106-小十人頭-07.yml
+        - name: 七番組 元十番
+          note:
+            - 淺黄紋赤
+          members: 106-小十人頭-08.yml
+        - name: 八番組 元三番 當西丸一番
+          note:
+            - 白地紋黒
+          members: 106-小十人頭-09.yml
+        - name: 九番組 當西丸二番
+          note:
+            - 淺地金紋
+          members: 106-小十人頭-10.yml
