@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=tools/schema/books.json
 - book: 卷之壹
   index:
     - 執事職

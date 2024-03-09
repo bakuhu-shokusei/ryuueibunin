@@ -8,7 +8,7 @@ import { fileURLToPath } from 'node:url'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
-let bookSchema = readFileSync(resolve(__dirname, './schema/books.json'))
+let bookSchema = readFileSync(resolve(__dirname, './schema/book.json'))
 bookSchema = JSON.parse(bookSchema.toString())
 let memberSchema = readFileSync(resolve(__dirname, './schema/member.json'))
 memberSchema = JSON.parse(memberSchema.toString())

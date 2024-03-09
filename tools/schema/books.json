@@ -1,102 +1,106 @@
 {
-  "type": "object",
-  "properties": {
-    "book": {
-      "type": "string"
-    },
-    "index": {
-      "type": "array",
-      "items": {
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "book": {
         "type": "string"
+      },
+      "index": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "opening": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "positions": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "name2": {
+              "type": "string"
+            },
+            "note": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "opening": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "opening2": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "ending": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "groups": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "members": {
+                    "type": "string"
+                  },
+                  "note": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "opening": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "opening2": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "ending": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "required": ["members"],
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": ["name", "groups"],
+          "additionalProperties": false
+        }
       }
     },
-    "opening": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
-    "positions": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string"
-          },
-          "name2": {
-            "type": "string"
-          },
-          "note": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "opening": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "opening2": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "ending": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "groups": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": "string"
-                },
-                "members": {
-                  "type": "string"
-                },
-                "note": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "opening": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "opening2": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "ending": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                }
-              },
-              "required": ["members"],
-              "additionalProperties": false
-            }
-          }
-        },
-        "required": ["name", "groups"],
-        "additionalProperties": false
-      }
-    }
-  },
-  "required": ["book", "index", "positions"],
-  "additionalProperties": false
+    "required": ["book", "index", "positions"],
+    "additionalProperties": false
+  }
 }
