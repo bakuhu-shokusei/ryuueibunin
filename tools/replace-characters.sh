@@ -20,6 +20,7 @@ git diff --name-only --cached | xargs -i \
   s#(子|丑|寅|卯|辰|巳|午|未|申|酉|戌|亥)月日#\1 月 日#g
   s|兀祿|元祿|g
   s|兀治|元治|g
+  s|止徳|正徳|g
   s|廻|𢌞|g
   s|〓リ|𢌞リ|g
   s|又政|文政|g
@@ -36,4 +37,4 @@ git diff --name-only --cached | xargs -i \
   s|冨士|富士|g
   /^(曰|日|目|戸|E|ヨ|〓)$/d
   ' {}
-# fd -e txt -e yml -x sed -i -e "s|箪笥|簞笥|g" 
+# fd -e txt -e yml -x sed -i -e "s|止徳|正徳|g" 
