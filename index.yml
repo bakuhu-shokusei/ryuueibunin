@@ -3823,3 +3823,50 @@
         - 御門ト記ス
       groups:
         - members: 208-西丸裏門番頭-01.yml
+        - members: 208-西丸裏門番頭-02.yml
+        - members: 208-西丸裏門番頭-03.yml
+        - members: 208-西丸裏門番頭-04.yml
+    - name: 御裏御門切手番之頭
+      name2: 裏門切手番之頭
+      note:
+        - 始同心廿五人宛
+      opening:
+        - 慶長七寅年御番所始リ、此節初而大御番ヨリ
+        - 松平小大夫・松平孫大夫、后四組、其后八組、
+        - 元祿八申年ヨリ六組ニナリ、同心廿人宛
+      groups:
+        - name: 一番組
+          members: 209-裏門切手番之頭-01.yml
+        - name: 二番組
+          members: 209-裏門切手番之頭-02.yml
+        - name: 同三番組
+          members: 209-裏門切手番之頭-03.yml
+        - name: 同四番組
+          members: 209-裏門切手番之頭-04.yml
+        - name: 同五番組
+          members: 209-裏門切手番之頭-05.yml
+        - name: 同六番組
+          members: 209-裏門切手番之頭-06.yml
+        - name: 同四番組
+          members: 209-裏門切手番之頭-07.yml
+          ending:
+            - 右跡役不被仰付、同心は割組ニ相成、此後六組ニ
+            - 相成ル
+        - name: 同五番組
+          members: 209-裏門切手番之頭-08.yml
+          ending:
+            - 右跡役不被仰付、組同心割組ニ成ル
+    - name: 西丸切手御門番之頭
+      name2: 西丸切手門番之頭
+      groups:
+        - members: 210-西丸切手門番之頭.yml
+    - name: 寄合組頭
+      groups:
+        - members: 211-寄合組頭.yml
+    - name: 寄合肝煎
+      opening:
+        - 寛政二戌年十二月十九日初而被仰付、同席之
+        - 者共藝術其外萬端取締リ之儀迄可致世話、依
+        - 之同席・上席御役金御免被成下候
+      groups:
+        - members: 212-寄合肝煎.yml
