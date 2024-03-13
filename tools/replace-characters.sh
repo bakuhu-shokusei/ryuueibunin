@@ -39,4 +39,4 @@ git diff --name-only --cached | xargs -i \
   /^(曰|日|目|戸|E|ヨ|〓)$/d
   ' {}
 # fd -e txt -e yml -x sed -i -e "s|𢌞|廻|g" 
-# %s/\廻/廻/g
+# fd -e txt -e yml -x sd 𢌞 廻 {} 
