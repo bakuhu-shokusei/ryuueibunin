@@ -12,7 +12,7 @@ git diff --name-only --cached | xargs -i \
   s|伯.守|伯耆守|g
   s|〓女$|采女|g
   s|江割入|え割入|g
-  s|見〓|見𢌞|g
+  s|見〓|見廻|g
   s|支〓$|支配|g
   s|御〓下|御廊下|g
   s|石兒守|石見守|g
@@ -21,8 +21,8 @@ git diff --name-only --cached | xargs -i \
   s|兀祿|元祿|g
   s|兀治|元治|g
   s|止徳|正徳|g
-  s|廻|𢌞|g
-  s|〓リ|𢌞リ|g
+  s|𢌞|廻|g
+  s|〓リ|廻リ|g
   s|又政|文政|g
   s|○|⭕|g
   s|大保|天保|g
@@ -38,4 +38,5 @@ git diff --name-only --cached | xargs -i \
   s|部屋佳|部屋住|g
   /^(曰|日|目|戸|E|ヨ|〓)$/d
   ' {}
-# fd -e txt -e yml -x sed -i -e "s|部屋佳|部屋住|g" 
+# fd -e txt -e yml -x sed -i -e "s|𢌞|廻|g" 
+# %s/\廻/廻/g
