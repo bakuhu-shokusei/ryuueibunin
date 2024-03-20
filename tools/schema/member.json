@@ -15,6 +15,9 @@
       "items": {
         "type": "string"
       }
+    },
+    "tree": {
+      "type": "string"
     }
   },
   "required": ["page", "info"],

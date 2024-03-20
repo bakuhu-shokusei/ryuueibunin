@@ -25,6 +25,7 @@ interface Member {
   page: number;
   note?: string[];
   info: string[];
+  tree?: string; // e.g. "xxx,2,2", "xx,2"
 }
 
 note:
