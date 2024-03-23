@@ -36,7 +36,8 @@ git diff --name-only --cached | xargs -i \
   s|〓笥|簞笥|g
   s|冨士|富士|g
   s|部屋佳|部屋住|g
+  s|釵術|釰術|g
   /^(曰|日|目|戸|E|ヨ|〓)$/d
   ' {}
-# fd -e txt -e yml -x sed -i -e "s|𢌞|廻|g" 
+# fd -e txt -e yml -x sed -i -e "s|釵術|釰術|g" 
 # fd -e txt -e yml -x sd 𢌞 廻 {} 
