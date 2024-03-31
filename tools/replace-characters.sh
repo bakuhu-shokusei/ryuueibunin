@@ -40,7 +40,9 @@ git diff --name-only --cached | xargs -i \
   s|小納日|小納戸|g
   s/御小(件|忰|牲)$/御小性/g
   s|御移徃|御移徙|g
+  s|御移徒|御移徙|g
+  s/同日[^同]斷/同日同斷/g
   /^(曰|日|目|戸|E|ヨ|〓)$/d
   ' {}
-# fd -e txt -e yml -x sed -i -E "s|御移徃|御移徙|g" 
+# fd -e txt -e yml -x sed -i -E "s/同日[^同]斷/同日同斷/g" 
 # fd -e txt -e yml -x sd 𢌞 廻 {} 
