@@ -39,12 +39,6 @@
               "type": "string"
             }
           },
-          "opening2": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
           "ending": {
             "type": "array",
             "items": {
@@ -69,12 +63,6 @@
                   }
                 },
                 "opening": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "opening2": {
                   "type": "array",
                   "items": {
                     "type": "string"
