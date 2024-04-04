@@ -1,5 +1,5 @@
 // https://shellyln.github.io/tynder/playground.html
-interface Book {
+export interface Book {
   book: string;
   index: string[];
   opening?: string[];
@@ -19,13 +19,9 @@ interface Book {
   }[];
 }
 
-interface Member {
+export interface Member {
   page: number;
   note?: string[];
   info: string[];
   tree?: string; // e.g. "xxx,2,2", "xx,2"
 }
-
-note:
-special type
-- (線ハ朱書)

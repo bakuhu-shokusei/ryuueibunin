@@ -46,3 +46,4 @@ git diff --name-only --cached | xargs -i \
   ' {}
 # fd -e txt -e yml -x sed -i -E "s/同日[^同]斷/同日同斷/g" 
 # fd -e txt -e yml -x sd 𢌞 廻 {} 
+#𛀁|江|に|囘|司|兀|達|目$|\s\d\d\d|月日|〓|月卒|月辭|𢌞|釵|5|\n\n\n
