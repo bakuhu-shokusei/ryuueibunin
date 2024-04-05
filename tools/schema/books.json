@@ -30,6 +30,9 @@
             "name2": {
               "type": "string"
             },
+            "name3": {
+              "type": "string"
+            },
             "note": {
               "type": "array",
               "items": {
@@ -42,11 +45,8 @@
                 "type": "string"
               }
             },
-            "ending": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
+            "indexPath": {
+              "type": "string"
             },
             "groups": {
               "type": "array",
@@ -83,7 +83,7 @@
               }
             }
           },
-          "required": ["name", "groups"],
+          "required": ["name", "groups", "indexPath"],
           "additionalProperties": false
         }
       }

@@ -1,6 +1,7 @@
-import yaml from 'js-yaml'
+import yaml, { dump } from 'js-yaml'
 import {
   readFileSync,
+  writeFileSync,
   rmSync,
   existsSync,
   mkdirSync,
@@ -66,7 +67,7 @@ function reverseSearch(path: Path): IndexPath[] {
   const [kan, posIndx] = path
   const position = books[kan].positions[posIndx]
   const members = readMember(position.groups[0].members)
-  const page = members[0].page
+  const page = members[0]?.page || -1
 
   return [page, page - 1]
     .flatMap((p) => {
@@ -76,10 +77,37 @@ function reverseSearch(path: Path): IndexPath[] {
     .filter(Boolean)
 }
 
-// console.log(
-//   reverseSearch([0, 0]).map((i) => {
-//     const [kana, x] = i
-//     const entity = index[kana][x]
-//     return `${kana} => ${entity.name}`
-//   })
-// )
+function addIndexPath() {
+  books.forEach((book, kan) => {
+    book.positions.forEach((p, posIndx) => {
+      const match: string[] = []
+      const candidates = reverseSearch([kan, posIndx]).map((i) => {
+        const [kana, x, y] = i
+        const entity = index[kana][x]
+        let text = `${kana}-${entity.name}`
+        if (y !== undefined) {
+          text = text + `-${entity.children![y].name}`
+        }
+        if (
+          text.includes(p.name || 'not-exist') ||
+          text.includes(p.name2 || 'not-exist')||
+          text.includes(p.name3 || 'not-exist')
+        ) {
+          match.push(text)
+        }
+        return text
+      })
+      if (match.length > 0) {
+        p.indexPath = match.join('|')
+      } else if (candidates.length) {
+        p.indexPath = 'not found:' + candidates.join('|')
+      }
+    })
+  })
+  writeFileSync(
+    resolve(__dirname, '../../index.yml'),
+    '# yaml-language-server: $schema=tools/schema/books.json\n' + dump(books)
+  )
+}
+
+addIndexPath()

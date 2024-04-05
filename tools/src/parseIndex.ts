@@ -79,6 +79,7 @@ function parse(): Indexes {
 }
 
 export const index = parse()
+console.log(index)
 
 export type IndexPath = [string, number, number?] // e.g. あ, 2, 1
 const reverseIndex: Record<string, IndexPath[]> = {}
