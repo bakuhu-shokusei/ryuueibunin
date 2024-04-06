@@ -45,9 +45,6 @@
                 "type": "string"
               }
             },
-            "indexPath": {
-              "type": "string"
-            },
             "groups": {
               "type": "array",
               "items": {
@@ -76,14 +73,17 @@
                     "items": {
                       "type": "string"
                     }
+                  },
+                  "id": {
+                    "type": "string"
                   }
                 },
-                "required": ["members"],
+                "required": ["members", "id"],
                 "additionalProperties": false
               }
             }
           },
-          "required": ["name", "groups", "indexPath"],
+          "required": ["name", "groups"],
           "additionalProperties": false
         }
       }

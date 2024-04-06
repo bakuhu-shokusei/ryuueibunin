@@ -11,6 +11,7 @@ import { resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { Book, Member } from './type.js'
 import { Entity, reverseIndex, index, IndexPath } from './parseIndex.js'
+import { group } from 'node:console'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -77,37 +78,63 @@ function reverseSearch(path: Path): IndexPath[] {
     .filter(Boolean)
 }
 
-function addIndexPath() {
-  books.forEach((book, kan) => {
-    book.positions.forEach((p, posIndx) => {
-      const match: string[] = []
-      const candidates = reverseSearch([kan, posIndx]).map((i) => {
-        const [kana, x, y] = i
-        const entity = index[kana][x]
-        let text = `${kana}-${entity.name}`
-        if (y !== undefined) {
-          text = text + `-${entity.children![y].name}`
-        }
-        if (
-          text.includes(p.name || 'not-exist') ||
-          text.includes(p.name2 || 'not-exist')||
-          text.includes(p.name3 || 'not-exist')
-        ) {
-          match.push(text)
-        }
-        return text
-      })
-      if (match.length > 0) {
-        p.indexPath = match.join('|')
-      } else if (candidates.length) {
-        p.indexPath = 'not found:' + candidates.join('|')
-      }
-    })
-  })
+function writeBack(){
   writeFileSync(
     resolve(__dirname, '../../index.yml'),
     '# yaml-language-server: $schema=tools/schema/books.json\n' + dump(books)
   )
 }
 
-addIndexPath()
+function addIndexPath() {
+  books.forEach((book, kan) => {
+    book.positions.forEach((p, posIndx) => {
+      delete (p as any).indexPath
+      // const match: string[] = []
+      // const candidates = reverseSearch([kan, posIndx]).map((i) => {
+      //   const [kana, x, y] = i
+      //   const entity = index[kana][x]
+      //   let text = `${kana}-${entity.name}`
+      //   if (y !== undefined) {
+      //     text = text + `-${entity.children![y].name}`
+      //   }
+      //   if (
+      //     text.includes(p.name || 'not-exist') ||
+      //     text.includes(p.name2 || 'not-exist') ||
+      //     text.includes(p.name3 || 'not-exist')
+      //   ) {
+      //     match.push(text)
+      //   }
+      //   return text
+      // })
+      // if (match.length > 0) {
+      //   if (match.length > 1) {
+      //     p.indexPath = match.join('|')
+      //   }
+      // } else if (candidates.length) {
+      //   p.indexPath = 'not found:' + candidates.join('|')
+      // }
+    })
+  })
+  writeBack()
+}
+
+// function addId() {
+//   books.forEach((book, kan) => {
+//     const bookNumber = kan2Book(kan)
+//     let previousPage = -1
+//     book.positions.forEach((p, posIndx) => {
+//       p.groups.forEach((g) => {
+//         const members = readMember(g.members)
+//         const page = members[0]?.page || -1
+//         if (previousPage >= 0 && page === previousPage + 1) {
+//           // oh no
+//           g.id = `${bookNumber}-???${page}`
+//         } else if (previousPage === -1 || page === previousPage) {
+//           g.id = `${bookNumber}-${page}`
+//         }
+//         previousPage = members[members.length - 1]?.page || -1
+//       })
+//     })
+//   })
+//   writeBack()
+// }

@@ -16,6 +16,7 @@ export interface Book {
       note?: string[]
       opening?: string[]
       ending?: string[]
+      id: string
     }[]
   }[]
 }
