@@ -78,7 +78,7 @@ function reverseSearch(path: Path): IndexPath[] {
     .filter(Boolean)
 }
 
-function writeBack(){
+function writeBack() {
   writeFileSync(
     resolve(__dirname, '../../index.yml'),
     '# yaml-language-server: $schema=tools/schema/books.json\n' + dump(books)
@@ -138,3 +138,28 @@ function addIndexPath() {
 //   })
 //   writeBack()
 // }
+
+// function modifyId() {
+//   const letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i']
+//   books.forEach((book) => {
+//     const gs = book.positions.flatMap((p) => p.groups)
+//     let i = 0
+//     while (i < gs.length) {
+//       let count = 0
+//       while (i < gs.length - 1 && gs[i].id === gs[i + 1].id) {
+//         // console.log("before:", gs[i].id)
+//         gs[i].id = gs[i].id + '-' + letters[count]
+//         // console.log("after:", gs[i].id)
+//         count++
+//         i++
+//       }
+//       if (count > 0) {
+//         gs[i].id = gs[i].id + '-' + letters[count]
+//       }
+//       count = 0
+//       i++
+//     }
+//   })
+//   writeBack()
+// }
+
