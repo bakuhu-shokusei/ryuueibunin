@@ -9,7 +9,6 @@ export interface Book {
     name3?: string
     note?: string[]
     opening?: string[]
-    indexPath: string
     groups: {
       name?: string
       members: string

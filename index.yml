@@ -2278,7 +2278,7 @@
         - ル
       groups:
         - members: 000-empty.yml
-          id: 3--1-a
+          id: 3-1-a
     - name: 御先手
       name2: 先手
       note:
@@ -2292,7 +2292,7 @@
             - 御切米百俵被下御譜代被仰付、同心は一同撒
             - 兵被仰付候事
           members: 000-empty.yml
-          id: 3--1-b
+          id: 3-1-b
     - name: 御先弓頭
       name2: 先手弓頭
       groups:

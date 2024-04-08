@@ -11,15 +11,14 @@ import { resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { Book, Member } from './type.js'
 import { Entity, reverseIndex, index, IndexPath } from './parseIndex.js'
-import { group } from 'node:console'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
-const books = yaml.load(
+export const books = yaml.load(
   readFileSync(resolve(__dirname, '../../index.yml')).toString()
 ) as Book[]
-function readMember(file: string) {
+export function readMember(file: string) {
   return yaml.load(
     readFileSync(resolve(__dirname, `../../${file}`)).toString()
   ) as Member[]
@@ -34,13 +33,13 @@ const BOOK2KAN: Record<number, number[]> = {
   5: [19, 20, 21, 22].map((i) => i - 1),
   6: [23, 24, 25].map((i) => i - 1),
 }
-function kan2Book(kan: number): number {
+export function kan2Book(kan: number): number {
   for (const book of [1, 2, 3, 4, 5, 6]) {
     if (BOOK2KAN[book].includes(kan)) {
       return book
     }
   }
-  throw 'Invalid kan!'
+  throw `Invalid kan: ${kan}`
 }
 
 type Path = [number, number] // kan, position index
