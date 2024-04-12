@@ -1,16 +1,9 @@
 import yaml, { dump } from 'js-yaml'
-import {
-  readFileSync,
-  writeFileSync,
-  rmSync,
-  existsSync,
-  mkdirSync,
-  appendFileSync,
-} from 'node:fs'
+import { readFileSync, writeFileSync } from 'node:fs'
 import { resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { Book, Member } from './type.js'
-import { Entity, reverseIndex, index, IndexPath } from './parseIndex.js'
+import { reverseIndex, IndexPath } from './parseIndex.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -161,4 +154,3 @@ function addIndexPath() {
 //   })
 //   writeBack()
 // }
-

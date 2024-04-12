@@ -268,6 +268,7 @@ function position2Link(position: Position): string {
     )
   })
   if (!r) {
+    console.log(position)
     throw 'index: cannot find page'
   }
   return `${r?.path}`
