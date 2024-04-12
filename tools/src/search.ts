@@ -25,7 +25,7 @@ export function readMember(file: string) {
 }
 
 // 20 + 余 + 余乾 + 余坤 + 別巻乾 + 別巻坤
-const BOOK2KAN: Record<number, number[]> = {
+export const BOOK2KAN: Record<number, number[]> = {
   1: [1, 2, 3, 4, 5].map((i) => i - 1),
   2: [6, 7, 8, 9].map((i) => i - 1),
   3: [10, 11, 12, 13, 14].map((i) => i - 1),

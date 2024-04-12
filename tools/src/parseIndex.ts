@@ -6,7 +6,7 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 const indexPath = resolve(__dirname, '../../index.txt')
 
-interface Position {
+export interface Position {
   bookNumber: number
   page: number
 }
@@ -33,6 +33,7 @@ function parseString(content: string): Indexes {
   let parent: Entity | undefined = undefined
 
   lines.forEach((line) => {
+    line = line.trimEnd()
     if (line.length === 0) {
       kana = ''
       parent = undefined

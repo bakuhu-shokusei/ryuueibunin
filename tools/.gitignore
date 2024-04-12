@@ -1,3 +1,7 @@
 node_modules
 dist
 yarn-error.log
+docs/.vitepress/cache
+docs/.vitepress/dist
+docs/.vitepress/sidebar.json
+docs/content

@@ -4,13 +4,19 @@
   "main": "index.js",
   "license": "MIT",
   "type": "module",
+  "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
+  },
   "dependencies": {
     "@types/node": "^20.12.3",
     "ajv": "^8.12.0",
     "chalk": "^5.3.0",
     "csv-stringify": "^6.4.5",
     "js-yaml": "^4.1.0",
-    "typescript": "^5.4.3"
+    "typescript": "^5.4.3",
+    "vitepress": "^1.0.2"
   },
   "engines": {
     "node": ">=20"

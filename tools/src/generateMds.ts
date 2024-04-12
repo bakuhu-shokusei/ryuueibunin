@@ -2,12 +2,11 @@ import {
   appendFileSync,
   existsSync,
   mkdirSync,
-  readFileSync,
   rmSync,
   writeFileSync,
-  writeSync,
 } from 'node:fs'
 import { books, readMember, kan2Book } from './search.js'
+import { Entity, Position, index } from './parseIndex.js'
 import { Book } from './type.js'
 
 import { resolve, dirname } from 'node:path'
@@ -15,8 +14,6 @@ import { fileURLToPath } from 'node:url'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
-
-const vitePressPath = resolve(__dirname, '../../vitepress')
 
 interface Output {
   [s: string]: {
@@ -32,7 +29,7 @@ interface Output {
 const output: Output = {}
 
 books.forEach((book, idx1) => {
-  const bookPath = resolve(vitePressPath, `${idx1 + 1}`)
+  const bookPath = resolve(resolve(__dirname, '../docs/content'), `${idx1 + 1}`)
   output[book.book] = []
   rmSync(bookPath, { recursive: true, force: true })
   mkdirSync(bookPath)
@@ -141,23 +138,66 @@ function createMd(p: Book['positions'][number]) {
 
   if (p.note) {
     buffer.push(
-      `::: raw
-<div class="tip custom-block ryuu-text">
-${p.note.join('<br>')}
-</div>
-:::`
+      `<Note type="tip">
+${p.note.join('<br>\n')}
+</Note>`
     )
   }
 
   if (p.opening) {
     buffer.push(
-      `::: raw
-<div class="info custom-block ryuu-text">
-${p.opening.join('<br>')}
-</div>
-:::`
+      `<Note type="info">
+${p.opening.join('<br>\n')}
+</Note>`
     )
   }
+
+  p.groups.forEach((g) => {
+    if (g.name) {
+      buffer.push(`## ${g.name}`)
+    }
+
+    if (g.note) {
+      buffer.push(
+        `<Note type="tip">
+${g.note.join('<br>\n')}
+</Note>`
+      )
+    }
+
+    if (g.opening) {
+      buffer.push(
+        `<Note type="info">
+${g.opening.join('<br>\n')}
+</Note>`
+      )
+    }
+
+    const members = readMember(g.members)
+    if (members.length > 0) {
+      const table: string[] = []
+      table.push('| 任免 | 姓名 |')
+      table.push('| :--- | ---: |')
+      function createTableData(s: string[] | undefined): string {
+        if (!s) return ''
+        return s.map((i) => i.replace(/(?<!\\)\|/g, '\\|')).join('<br>')
+      }
+      members.forEach((m) => {
+        table.push(
+          `| ${createTableData(m.note)} | ${createTableData(m.info)} |`
+        )
+      })
+      buffer.push(table.join('\n'))
+    }
+
+    if (g.ending) {
+      buffer.push(
+        `<Note type="info">
+${g.ending.join('<br>\n')}
+</Note>`
+      )
+    }
+  })
 
   return buffer.join('\n\n')
 }
@@ -175,8 +215,63 @@ function createNavs() {
     }
   })
   writeFileSync(
-    resolve(vitePressPath, '.vitepress/sidebar.json'),
+    resolve(__dirname, '../docs/.vitepress/sidebar.json'),
     JSON.stringify(navs, null, 2)
   )
 }
+
+function createIndex() {
+  const buffer: string[] = []
+  buffer.push(['---', 'layout: doc', '---'].join('\n'))
+
+  buffer.push(`# 役職名`)
+
+  for (const kana of Object.keys(index)) {
+    const tmp: string[] = []
+    tmp.push(`## ${kana}`)
+    for (const entity of index[kana]) {
+      tmp.push(renderEntity(entity))
+    }
+    buffer.push(tmp.join('\n'))
+  }
+
+  writeFileSync(resolve(__dirname, '../docs/index.md'), buffer.join('\n\n'))
+}
+
+function renderEntity(entity: Entity): string {
+  let result = `${entity.name}`
+  if (entity.positions) {
+    result = [result]
+      .concat(
+        entity.positions.map((p, idx) => {
+          return `[${idx + 1}](${position2Link(p)})`
+        })
+      )
+      .join(' ')
+  }
+  result += '\n\n'
+  if (entity.children) {
+    for (const e of entity.children) {
+      result += '&emsp;' + renderEntity(e)
+    }
+  }
+  return result
+}
+
+function position2Link(position: Position): string {
+  const array = Object.values(output).flat()
+  const r = array.find((i) => {
+    return (
+      i.book === position.bookNumber &&
+      position.page >= i.startPage &&
+      position.page <= i.endPage
+    )
+  })
+  if (!r) {
+    throw 'index: cannot find page'
+  }
+  return `${r?.path}`
+}
+
 createNavs()
+createIndex()
