@@ -58,6 +58,11 @@ books.forEach((book, idx1) => {
         positions: [],
       }
     }
+    const updateDisplayName = (old: string, newName: string) => {
+      const names = old.split('-')
+      if (names.includes(newName)) return old
+      return `${old}-${newName}`
+    }
 
     if (previousInfo === undefined) {
       initInfo()
@@ -79,7 +84,10 @@ books.forEach((book, idx1) => {
       const ppInfo = output[book.book][output[book.book].length - 1]
       if (previousInfo.endPage === ppInfo?.endPage) {
         ppInfo.positions.push(...previousPositions)
-        ppInfo.displayName += `-${previousInfo.displayName}`
+        ppInfo.displayName = updateDisplayName(
+          ppInfo.displayName,
+          previousInfo.displayName
+        )
         for (const name of previousInfo.names) {
           ppInfo.names.add(name)
         }
@@ -97,7 +105,10 @@ books.forEach((book, idx1) => {
       const ppInfo = output[book.book][output[book.book].length - 1]
       if (previousInfo.endPage === ppInfo?.endPage) {
         ppInfo.positions.push(...previousPositions)
-        ppInfo.displayName += `-${previousInfo.displayName}`
+        ppInfo.displayName = updateDisplayName(
+          ppInfo.displayName,
+          previousInfo.displayName
+        )
         for (const name of previousInfo.names) {
           ppInfo.names.add(name)
         }
