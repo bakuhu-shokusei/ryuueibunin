@@ -226,9 +226,7 @@ function createNavs() {
 
 function createIndex() {
   const buffer: string[] = []
-  buffer.push(['---', 'layout: doc', 'title: 索引', '---'].join('\n'))
-
-  buffer.push(`# 役職名`)
+  buffer.push(['---', 'layout: doc', 'title: 役職名索引', '---'].join('\n'))
 
   for (const kana of Object.keys(index)) {
     const tmp: string[] = []
