@@ -202,10 +202,11 @@ function createNavs() {
   const navs = Object.keys(output).map((book, idx) => {
     return {
       text: book,
+      collapsed: false,
       items: output[book].map((i) => {
         return {
           text: i.displayName,
-          link: `/${idx + 1}/` + i.path.replace('.md', ''),
+          link: `${idx + 1}/` + i.path.replace('.md', ''),
         }
       }),
     }
