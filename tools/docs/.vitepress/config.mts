@@ -19,12 +19,16 @@ export default defineConfig({
   themeConfig: {
     nav: [
       {
+        text: '索引',
+        link: 'index',
+      },
+      {
         text: '原文',
         link: `/content/${sidebar[0].items[0].link}`,
       },
       {
-        text: '索引',
-        link: 'index',
+        text: '本サイトについて',
+        link: 'about',
       },
     ],
     sidebar: {
@@ -32,6 +36,10 @@ export default defineConfig({
         base: '/content/',
         items: sidebar,
       },
+    },
+    outline: {
+      level: 'deep',
+      label: '目次',
     },
     socialLinks: [
       { icon: 'github', link: 'https://github.com/Shenmin-Z/edo-jinji' },

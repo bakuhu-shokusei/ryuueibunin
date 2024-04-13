@@ -122,7 +122,14 @@ function writeMdFiles() {
         resolve(__dirname, '../docs/content'),
         `${i.kan}/${i.path}`
       )
-      writeFileSync(path, i.positions.map(createMd).join('\n\n'))
+      const namesSeparatedBySpace = i.displayName.split('-').join(' ')
+      writeFileSync(
+        path,
+        [
+          ['---', `title: ${namesSeparatedBySpace}`, '---'].join('\n'),
+          ...i.positions.map(createMd),
+        ].join('\n\n')
+      )
     })
 }
 writeMdFiles()
@@ -130,7 +137,7 @@ writeMdFiles()
 function createMd(p: Book['positions'][number]) {
   const buffer: string[] = []
 
-  buffer.push(`# ${p.name}`)
+  buffer.push(`## ${p.name}`)
 
   if (p.note) {
     buffer.push(
@@ -150,7 +157,7 @@ ${p.opening.join('<br>\n')}
 
   p.groups.forEach((g) => {
     if (g.name) {
-      buffer.push(`## ${g.name}`)
+      buffer.push(`### ${g.name}`)
     }
 
     if (g.note) {
@@ -219,7 +226,7 @@ function createNavs() {
 
 function createIndex() {
   const buffer: string[] = []
-  buffer.push(['---', 'layout: doc', '---'].join('\n'))
+  buffer.push(['---', 'layout: doc', 'title: 索引', '---'].join('\n'))
 
   buffer.push(`# 役職名`)
 
@@ -274,50 +281,52 @@ function position2Link(position: Position, name: string): string {
 
   const candidates: { link: string; similarity: number }[] = []
   for (const r of rs) {
-    const base = `/content/${r.kan}/${r.path}`
-    if (r.names.has(name)) {
-      return base
+    const count: Record<string, number> = {}
+
+    const createHash = (hash: string) => {
+      if (count[hash] > 1) hash += `-${count[hash] - 1}`
+      return `/content/${r.kan}/${r.path}#${encodeURIComponent(
+        hash.replace(/(\s|\(|\))/g, '-')
+      )}`
     }
     for (const p of r.positions) {
+      count[p.name] = (count[p.name] ?? 0) + 1
+
       candidates.push({
-        link: base,
+        link: createHash(p.name),
         similarity: compareTwoStrings(name, p.name),
       })
       candidates.push({
-        link: base,
+        link: createHash(p.name),
         similarity: compareTwoStrings(name, p.name2 || ''),
       })
       candidates.push({
-        link: base,
+        link: createHash(p.name),
         similarity: compareTwoStrings(name, p.name3 || ''),
       })
       if (p.note) {
         candidates.push({
-          link: base,
+          link: createHash(p.name),
           similarity: compareTwoStrings(name, p.note.join(' ')),
         })
       }
       p.groups.forEach((g, idx) => {
-        if (!g.name) return
+        if (!g.name && idx > 0) return
+        const titleName = g.name || p.name
+        if (g.name) {
+          count[g.name] = (count[g.name] ?? 0) + 1
+        }
 
         let extraScore = 0
         const [, _page] = g.id.split('-')
         const currentPage = parseInt(_page)
-        if (position.page >= currentPage) {
+        if (position.page === currentPage) {
           extraScore += 1
-        }
-        const next = p.groups[idx + 1]
-        if (next) {
-          const [, _page] = g.id.split('-')
-          const nextPage = parseInt(_page)
-          if (position.page > nextPage) {
-            extraScore -= 1
-          }
         }
 
         candidates.push({
-          link: `${base}#${encodeURIComponent(g.name.replace(/ /g, '-'))}`,
-          similarity: compareTwoStrings(name, g.name) + extraScore,
+          link: createHash(titleName),
+          similarity: compareTwoStrings(name, titleName) + extraScore,
         })
       })
     }
