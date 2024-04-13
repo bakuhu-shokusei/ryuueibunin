@@ -27,6 +27,7 @@ function readIndexFile(): string {
 
 function parseString(content: string): Indexes {
   const result: Indexes = {}
+  const names: Record<string, string> = {}
   const lines = content.split('\n')
 
   let kana = ''
@@ -39,7 +40,7 @@ function parseString(content: string): Indexes {
       parent = undefined
       return
     }
-    if (line.length === 1) {
+    if (/^[\u3040-\u309F]+$/.test(line)) {
       kana = line
       return
     }
@@ -47,6 +48,17 @@ function parseString(content: string): Indexes {
     const entity: Entity = {
       name,
     }
+    if (name.includes('=')) {
+      const [a, b] = name.split('=')
+      const filter = (s: string) => {
+        return s && !s.startsWith('家')
+      }
+      if (filter(a) && filter(b)) {
+        names[a] = b
+        names[b] = a
+      }
+    }
+
     if (pageInfo) {
       entity.positions = parsePageInfo(pageInfo)
     }
@@ -60,6 +72,24 @@ function parseString(content: string): Indexes {
       result[kana].push(entity)
     }
   })
+
+  // const all = Object.values(result).flat()
+  // all.forEach((e) => {
+  //   const [x, y] = e.name.split('=')
+  //   if (x && y) {
+  //     const match = all.find((i) => i.name === y)
+  //     if (match) {
+  //       e.name = `${x}(${y})`
+  //       e.positions = match.positions
+  //       e.children = match.children
+  //     }
+  //   }
+  // })
+  // all.forEach((e) => {
+  //   if (names[e.name]) {
+  //     e.name += `=${names[e.name]}`
+  //   }
+  // })
 
   return result
 }
