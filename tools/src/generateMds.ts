@@ -29,7 +29,7 @@ books.forEach((book, idx1) => {
   const bookPath = resolve(resolve(__dirname, '../docs/content'), `${idx1 + 1}`)
   output[book.book] = []
   rmSync(bookPath, { recursive: true, force: true })
-  mkdirSync(bookPath)
+  mkdirSync(bookPath, { recursive: true })
 
   let previousInfo: Output[string][number] | undefined
   let previousPositions: Book['positions'] = []

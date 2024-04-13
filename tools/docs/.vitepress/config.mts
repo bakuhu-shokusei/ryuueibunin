@@ -14,6 +14,7 @@ const sidebar = JSON.parse(
 export default defineConfig({
   lang: 'ja-JP',
   title: '柳営補任',
+  base: '/edo-jinji/',
   description: '江戸幕府諸役人の任免記録',
   themeConfig: {
     nav: [
