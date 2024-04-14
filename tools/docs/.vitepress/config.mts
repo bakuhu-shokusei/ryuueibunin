@@ -20,7 +20,12 @@ export default defineConfig({
     nav: [
       {
         text: '索引',
-        link: 'index',
+        items: [
+          {
+            text: '役職名',
+            link: 'index',
+          },
+        ],
       },
       {
         text: '原文',

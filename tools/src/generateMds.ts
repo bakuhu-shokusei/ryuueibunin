@@ -137,7 +137,12 @@ function writeMdFiles() {
       writeFileSync(
         path,
         [
-          ['---', `title: ${namesSeparatedBySpace}`, '---'].join('\n'),
+          [
+            '---',
+            `title: ${namesSeparatedBySpace}`,
+            'pageClass: no-h1-allowed',
+            '---',
+          ].join('\n'),
           ...i.positions.map(createMd),
         ].join('\n\n')
       )
@@ -237,7 +242,8 @@ function createNavs() {
 
 function createIndex() {
   const buffer: string[] = []
-  buffer.push(['---', 'layout: doc', 'title: 役職名索引', '---'].join('\n'))
+  buffer.push(['---', 'layout: doc', 'title: 索引 役職名', '---'].join('\n'))
+  buffer.push('# 索引 役職名')
 
   for (const kana of Object.keys(index)) {
     const tmp: string[] = []
