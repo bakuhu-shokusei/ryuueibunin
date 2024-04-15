@@ -2,4 +2,7 @@
   margin-top: 0;
   border-top: none;
   padding-top: 0;
+  .header-anchor {
+    top: 0;
+  }
 }
