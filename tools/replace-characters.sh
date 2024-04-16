@@ -47,6 +47,6 @@ git diff --name-only --cached | xargs -i \
   s|絛|條|g
   /^(曰|日|目|戸|E|ヨ|〓)$/d
   ' {}
-# fd -e txt -e yml -x sed -i -E "s|絛|條|g" 
+# fd -e txt -e yml -x sed -i -E "s|⭕||g" 
 # fd -e txt -e yml -x sd 𢌞 廻 {} 
 #𛀁|江|に|囘|司|兀|達|目$|\s\d\d\d|月日|〓|月卒|月辭|𢌞|釵|5|\n\n\n
