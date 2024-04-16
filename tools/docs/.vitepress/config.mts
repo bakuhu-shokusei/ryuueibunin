@@ -16,6 +16,7 @@ export default defineConfig({
   title: '柳営補任',
   base: '/edo-jinji/',
   description: '江戸幕府諸役人の任免記録',
+  head: [['link', { rel: 'icon', href: '/edo-jinji/favicon.ico' }]],
   themeConfig: {
     nav: [
       {
