@@ -79,9 +79,9 @@ export default defineConfig({
           modal: {
             noResultsText: '一致する検索結果がありません',
             footer: {
-              navigateText: '移動する',
+              navigateText: '移動',
               closeText: '閉じる',
-              selectText: '選択する',
+              selectText: '選択',
             },
           },
         },
