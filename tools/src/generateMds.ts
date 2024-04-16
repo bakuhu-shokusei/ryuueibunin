@@ -1,5 +1,5 @@
 import { mkdirSync, rmSync, writeFileSync } from 'node:fs'
-import { books, readMember, kan2Book } from './search.js'
+import { books, readMember } from './search.js'
 import { Entity, Position, index } from './parseIndex.js'
 import { compareTwoStrings } from 'string-similarity'
 import { Book } from './type.js'
@@ -30,6 +30,7 @@ books.forEach((book, idx1) => {
   output[book.book] = []
   rmSync(bookPath, { recursive: true, force: true })
   mkdirSync(bookPath, { recursive: true })
+  mkdirSync(bookPath.replace('content', 'indexing'), { recursive: true })
 
   let previousInfo: Output[string][number] | undefined
   let previousPositions: Book['positions'] = []
@@ -134,6 +135,8 @@ function writeMdFiles() {
         `${i.kan}/${i.path}`
       )
       const namesSeparatedBySpace = i.displayName.split('-').join(' ')
+
+      let start = 0
       writeFileSync(
         path,
         [
@@ -143,14 +146,22 @@ function writeMdFiles() {
             'pageClass: no-h1-allowed',
             '---',
           ].join('\n'),
-          ...i.positions.map(createMd),
+          ...i.positions.map((p) => createMd(p, () => ++start)),
         ].join('\n\n')
+      )
+
+      start = 0
+      writeFileSync(
+        path.replace('content', 'indexing'),
+        i.positions
+          .map((p) => createMdForIndexing(p, () => ++start))
+          .join('\n\n')
       )
     })
 }
 writeMdFiles()
 
-function createMd(p: Book['positions'][number]) {
+function createMd(p: Book['positions'][number], getId: () => number) {
   const buffer: string[] = []
 
   buffer.push(`## ${p.name}`)
@@ -195,15 +206,18 @@ ${g.opening.join('<br>\n')}
     const members = readMember(g.members)
     if (members.length > 0) {
       const table: string[] = []
-      table.push('| 任免 | 姓名 |')
-      table.push('| :--- | ---: |')
+      table.push('| # | 任免 | 姓名 |')
+      table.push('| :--- | :--- | ---: |')
       function createTableData(s: string[] | undefined): string {
         if (!s) return ''
         return s.map((i) => i.replace(/(?<!\\)\|/g, '\\|')).join('<br>')
       }
       members.forEach((m) => {
+        const hash = getId()
         table.push(
-          `| ${createTableData(m.note)} | ${createTableData(m.info)} |`
+          `| <a class="table-item-anchor" id="row-${hash}" href="#row-${hash}">${hash}</a> | ${createTableData(
+            m.note
+          )} | ${createTableData(m.info)} |`
         )
       })
       buffer.push(table.join('\n'))
@@ -215,6 +229,31 @@ ${g.opening.join('<br>\n')}
 ${g.ending.join('<br>\n')}
 </Note>`
       )
+    }
+  })
+
+  return buffer.join('\n\n')
+}
+
+function createMdForIndexing(
+  p: Book['positions'][number],
+  getId: () => number
+) {
+  const buffer: string[] = []
+
+  buffer.push(`## ${p.name}`)
+
+  p.groups.forEach((g) => {
+    if (g.name) {
+      buffer.push(`### ${g.name}`)
+    }
+
+    const members = readMember(g.members)
+    if (members.length > 0) {
+      members.forEach((m) => {
+        const hash = getId()
+        buffer.push(`#### ${m.info.join(' ')} {#row-${hash}}`)
+      })
     }
   })
 

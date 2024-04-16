@@ -5,4 +5,5 @@ docs/.vitepress/cache
 docs/.vitepress/dist
 docs/.vitepress/sidebar.json
 docs/content
+docs/indexing
 index.md

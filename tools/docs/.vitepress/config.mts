@@ -1,5 +1,5 @@
 import { defineConfig } from 'vitepress'
-import { readFileSync } from 'node:fs'
+import { readFileSync, existsSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { resolve, dirname } from 'node:path'
 
@@ -52,6 +52,51 @@ export default defineConfig({
     docFooter: {
       prev: '前のページ',
       next: '次のページ ',
+    },
+    search: {
+      provider: 'local',
+      options: {
+        miniSearch: {
+          options: {
+            tokenize(s) {
+              function tokenize(s: string): string[] {
+                const length = s.length
+                if (length === 5 && s.endsWith('守')) {
+                  return [s.substring(0, 2), s.substring(2)]
+                }
+                return [s]
+              }
+              return s.split(' ').flatMap(tokenize)
+            },
+          },
+        },
+        detailedView: false,
+        translations: {
+          button: {
+            buttonText: '検索',
+            buttonAriaLabel: '検索',
+          },
+          modal: {
+            noResultsText: '一致する検索結果がありません',
+            footer: {
+              navigateText: '移動する',
+              closeText: '閉じる',
+              selectText: '選択する',
+            },
+          },
+        },
+        _render(src, env, md) {
+          // ignore indexing file itself
+          if (env.path.includes('indexing')) return ''
+
+          const newPath = env.path.replace('content', 'indexing')
+          if (!existsSync(newPath)) {
+            return ''
+          }
+          const newSrc = readFileSync(newPath).toString()
+          return md.render(newSrc)
+        },
+      },
     },
   },
 })

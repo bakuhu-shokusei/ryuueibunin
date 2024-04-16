@@ -6,3 +6,7 @@
     top: 0;
   }
 }
+
+a.table-item-anchor {
+  text-decoration: none;
+}
