@@ -45,6 +45,9 @@ jobs:
         run: |
           yarn tsc
           node dist/generateMds.js
+      # - name: Modify VPLocalSearchBox
+      #   # change max 16 search results to 100
+      #   run: sed -i -e "s|(16)|(100)|" -e "s|(0, 16)|(0, 100)|" node_modules/vitepress/dist/client/theme-default/components/VPLocalSearchBox.vue
       - name: Build with VitePress
         run: yarn docs:build
       - name: Upload artifact

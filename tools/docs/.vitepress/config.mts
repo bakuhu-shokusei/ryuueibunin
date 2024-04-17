@@ -2,6 +2,8 @@ import { defineConfig } from 'vitepress'
 import { readFileSync, existsSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { resolve, dirname } from 'node:path'
+import { tokenize } from './search/tokenize.mjs'
+import { normalize } from './search/normalize.mjs'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -59,16 +61,8 @@ export default defineConfig({
       options: {
         miniSearch: {
           options: {
-            tokenize(s) {
-              function tokenize(s: string): string[] {
-                const length = s.length
-                if (length === 5 && s.endsWith('守')) {
-                  return [s.substring(0, 2), s.substring(2)]
-                }
-                return [s]
-              }
-              return s.split(' ').flatMap(tokenize)
-            },
+            tokenize,
+            processTerm: normalize,
           },
         },
         detailedView: false,
@@ -80,9 +74,9 @@ export default defineConfig({
           modal: {
             noResultsText: '一致する検索結果がありません',
             footer: {
-              navigateText: '移動',
+              navigateText: '移動する',
+              selectText: '選択する',
               closeText: '閉じる',
-              selectText: '選択',
             },
           },
         },
@@ -98,6 +92,18 @@ export default defineConfig({
           return md.render(newSrc)
         },
       },
+    },
+  },
+  vite: {
+    resolve: {
+      alias: [
+        {
+          find: /^.*\/VPLocalSearchBox\.vue$/,
+          replacement: fileURLToPath(
+            new URL('./components/LocalSearchBox.vue', import.meta.url)
+          ),
+        },
+      ],
     },
   },
 })
