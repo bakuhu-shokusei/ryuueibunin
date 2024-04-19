@@ -3,7 +3,7 @@ import { readFileSync, existsSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { resolve, dirname } from 'node:path'
 import { tokenize } from './search/tokenize.mjs'
-import { normalize } from './search/normalize.mjs'
+import { processTerm } from './search/normalize.mjs'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -62,7 +62,7 @@ export default defineConfig({
         miniSearch: {
           options: {
             tokenize,
-            processTerm: normalize,
+            processTerm,
           },
         },
         detailedView: false,

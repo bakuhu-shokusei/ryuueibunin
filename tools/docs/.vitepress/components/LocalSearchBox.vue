@@ -31,7 +31,8 @@ import { pathToFile } from 'vitepress/dist/client/app/utils'
 import { useData } from 'vitepress/dist/client/theme-default/composables/data'
 import { LRUCache } from 'vitepress/dist/client/theme-default/support/lru'
 import { createSearchTranslate } from 'vitepress/dist/client/theme-default/support/translation'
-import { new2OldMap } from '../search/normalize.mts'
+import { new2OldMap, processTerm } from '../search/normalize.mts'
+import { tokenize } from '../search/tokenize.mjs'
 
 function escapeRegExp(str: string) {
   // return str.replace(/[|\\{}()[\]^$+*?.]/g, '\\$&').replace(/-/g, '\\x2d')
@@ -86,8 +87,8 @@ const searchIndex = computedAsync(async () =>
           ...(theme.value.search?.provider === 'local' &&
             theme.value.search.options?.miniSearch?.searchOptions),
         },
-        ...(theme.value.search?.provider === 'local' &&
-          theme.value.search.options?.miniSearch?.options),
+        tokenize,
+        processTerm,
       }
     )
   )
