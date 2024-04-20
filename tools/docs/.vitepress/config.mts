@@ -85,7 +85,7 @@ export default defineConfig({
           if (env.path.includes('indexing')) return ''
 
           const newPath = env.path.replace('content', 'indexing')
-          if (!existsSync(newPath)) {
+          if (!newPath.includes('indexing')) {
             return ''
           }
           const newSrc = readFileSync(newPath).toString()

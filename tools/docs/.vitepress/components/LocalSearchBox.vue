@@ -152,7 +152,8 @@ const mark = computedAsync(async () => {
   return markRaw(new Mark(resultsEl.value))
 }, null)
 
-const cache = new LRUCache<string, Map<string, string>>(100) // 100 files
+const MAX_RESULT_NUMBER = 100
+const cache = new LRUCache<string, Map<string, string>>(MAX_RESULT_NUMBER)
 
 debouncedWatch(
   () =>
@@ -187,9 +188,11 @@ debouncedWatch(
           const regex = new RegExp(old2New(filterTextValue))
           results.value = (
             index.search(MiniSearch.wildcard) as (SearchResult & Result)[]
-          ).filter((i) => {
-            return regex.test(processTerm(i.title || ''))
-          })
+          )
+            .filter((i) => {
+              return regex.test(processTerm(i.title || ''))
+            })
+            .slice(0, MAX_RESULT_NUMBER)
         } catch {
           results.value = []
         }
@@ -201,7 +204,7 @@ debouncedWatch(
     else {
       results.value = index
         .search(filterTextValue)
-        .slice(0, 100) as (SearchResult & Result)[]
+        .slice(0, MAX_RESULT_NUMBER) as (SearchResult & Result)[]
     }
     enableNoResults.value = true
 
