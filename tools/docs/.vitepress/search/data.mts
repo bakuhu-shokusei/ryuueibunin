@@ -1676,3 +1676,8 @@ export const old2NewMap = {
   亙: '亘',
   灣: '湾',
 }
+
+export const new2OldMap: Record<string, string> = {}
+for (const [k, v] of Object.entries(old2NewMap)) {
+  new2OldMap[v] = (new2OldMap[v] || '') + k
+}

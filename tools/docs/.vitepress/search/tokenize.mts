@@ -14,10 +14,10 @@ export function tokenize(s: string): string[] {
 }
 
 const suffixMatch = new RegExp(
-  `^(.*)(${[...gokumei, ...kanshoku]
+  `^(.+)(${[...gokumei, ...kanshoku]
     .sort((a, b) => b.length - a.length)
     .join('|')})$`
 )
 const prefixMatch = new RegExp(
-  `^(${seimei.sort((a, b) => b.length - a.length).join('|')})(.*)$`
+  `^(${seimei.sort((a, b) => b.length - a.length).join('|')})(.{2,})$`
 )

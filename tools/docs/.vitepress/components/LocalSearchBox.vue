@@ -31,8 +31,10 @@ import { pathToFile } from 'vitepress/dist/client/app/utils'
 import { useData } from 'vitepress/dist/client/theme-default/composables/data'
 import { LRUCache } from 'vitepress/dist/client/theme-default/support/lru'
 import { createSearchTranslate } from 'vitepress/dist/client/theme-default/support/translation'
-import { new2OldMap, processTerm } from '../search/normalize.mts'
+import { processTerm, old2New } from '../search/normalize.mts'
+import { new2OldMap, old2NewMap } from '../search/data.mts'
 import { tokenize } from '../search/tokenize.mjs'
+import Radio from './Radio.vue'
 
 function escapeRegExp(str: string) {
   // return str.replace(/[|\\{}()[\]^$+*?.]/g, '\\$&').replace(/-/g, '\\x2d')
@@ -105,6 +107,8 @@ const filterText = disableQueryPersistence.value
   ? ref('')
   : useSessionStorage('vitepress:local-search-filter', '')
 
+const searchMode = ref<'fuzzy' | 'exact'>('fuzzy')
+
 const showDetailedList = useLocalStorage(
   'vitepress:local-search-detailed-list',
   theme.value.search?.provider === 'local' &&
@@ -151,8 +155,18 @@ const mark = computedAsync(async () => {
 const cache = new LRUCache<string, Map<string, string>>(100) // 100 files
 
 debouncedWatch(
-  () => [searchIndex.value, filterText.value, showDetailedList.value] as const,
-  async ([index, filterTextValue, showDetailedListValue], old, onCleanup) => {
+  () =>
+    [
+      searchIndex.value,
+      filterText.value,
+      showDetailedList.value,
+      searchMode.value,
+    ] as const,
+  async (
+    [index, filterTextValue, showDetailedListValue, mode],
+    old,
+    onCleanup
+  ) => {
     if (old?.[0] !== index) {
       // in case of hmr
       cache.clear()
@@ -166,9 +180,23 @@ debouncedWatch(
     if (!index) return
 
     // Search
-    results.value = index
-      .search(filterTextValue)
-      .slice(0, 100) as (SearchResult & Result)[]
+    // Mode 1: loop through all records to find EXACT match (not using mini search)
+    if (mode === 'exact') {
+      if (filterTextValue.length > 1) {
+        const regex = new RegExp(old2New(filterTextValue))
+        results.value = (
+          index.search(MiniSearch.wildcard) as (SearchResult & Result)[]
+        ).filter((i) => {
+          return regex.test(processTerm(i.title || ''))
+        })
+      }
+    }
+    // Mode 2: normal mini search
+    else {
+      results.value = index
+        .search(filterTextValue)
+        .slice(0, 100) as (SearchResult & Result)[]
+    }
     enableNoResults.value = true
 
     // Highlighting
@@ -235,7 +263,9 @@ debouncedWatch(
     await new Promise((r) => {
       mark.value?.unmark({
         done: () => {
-          mark.value?.markRegExp(formMarkRegex(terms), { done: r })
+          mark.value?.markRegExp(formMarkRegex(terms, filterTextValue), {
+            done: r,
+          })
         },
       })
     })
@@ -280,7 +310,7 @@ onMounted(() => {
 
 function onSearchBarClick(event: PointerEvent) {
   if (event.pointerType === 'mouse') {
-    focusSearchInput()
+    focusSearchInput(false)
   }
 }
 
@@ -401,11 +431,24 @@ function resetSearch() {
   nextTick().then(() => focusSearchInput(false))
 }
 
-function formMarkRegex(terms: Set<string>) {
+function formMarkRegex(terms: Set<string>, filterTextValue: string) {
+  if (searchMode.value === 'exact') {
+    return new RegExp(
+      filterTextValue
+        .split('')
+        .map((i) => {
+          if (new2OldMap[i]) return `[${i}${new2OldMap[i]}]`
+          if (old2NewMap[i]) return `[${i}${old2NewMap[i]}]`
+          return i
+        })
+        .join('')
+    )
+  }
   return new RegExp(
     [...terms]
       .sort((a, b) => b.length - a.length)
       .map((term) => {
+        // term is normalized (新字体)
         const newTerm = term
           .split('')
           .map((i) => {
@@ -492,6 +535,35 @@ function formMarkRegex(terms: Set<string>) {
             </button>
           </div>
         </form>
+        <div class="search-mode">
+          <Radio
+            name="search-mode"
+            label="あいまい"
+            id="fuzzy-search"
+            value="fuzzy"
+            :checked="searchMode === 'fuzzy'"
+            @checked="searchMode = 'fuzzy'"
+          />
+          <Radio
+            name="search-mode"
+            label="完全一致"
+            id="exact-search"
+            value="exact"
+            :checked="searchMode === 'exact'"
+            @checked="searchMode = 'exact'"
+          />
+          <p
+            class="keyword-length-error"
+            v-if="
+              enableNoResults &&
+              filterText.length > 0 &&
+              filterText.length < 2 &&
+              searchMode === 'exact'
+            "
+          >
+            二文字以上入力してください
+          </p>
+        </div>
 
         <ul
           ref="resultsEl"
@@ -703,6 +775,14 @@ function formMarkRegex(terms: Set<string>) {
 
 .search-actions button.clear-button:disabled {
   opacity: 0.37;
+}
+
+.search-mode {
+  margin: -8px 0;
+  .keyword-length-error {
+    color: var(--vp-c-red-2);
+    font-size: 0.9rem;
+  }
 }
 
 .search-keyboard-shortcuts {
