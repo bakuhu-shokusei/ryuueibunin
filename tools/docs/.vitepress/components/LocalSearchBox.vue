@@ -107,7 +107,7 @@ const filterText = disableQueryPersistence.value
   ? ref('')
   : useSessionStorage('vitepress:local-search-filter', '')
 
-const searchMode = ref<'fuzzy' | 'exact'>('fuzzy')
+const searchMode = useSessionStorage('custom-search:search-mode', 'fuzzy')
 
 const showDetailedList = useLocalStorage(
   'vitepress:local-search-detailed-list',
@@ -189,6 +189,10 @@ debouncedWatch(
         ).filter((i) => {
           return regex.test(processTerm(i.title || ''))
         })
+        enableNoResults.value = true
+      } else {
+        results.value = []
+        enableNoResults.value = false
       }
     }
     // Mode 2: normal mini search
@@ -196,8 +200,8 @@ debouncedWatch(
       results.value = index
         .search(filterTextValue)
         .slice(0, 100) as (SearchResult & Result)[]
+      enableNoResults.value = true
     }
-    enableNoResults.value = true
 
     // Highlighting
     const mods = showDetailedListValue
@@ -555,7 +559,6 @@ function formMarkRegex(terms: Set<string>, filterTextValue: string) {
           <p
             class="keyword-length-error"
             v-if="
-              enableNoResults &&
               filterText.length > 0 &&
               filterText.length < 2 &&
               searchMode === 'exact'
