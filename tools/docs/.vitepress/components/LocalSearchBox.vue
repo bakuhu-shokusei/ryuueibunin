@@ -183,16 +183,18 @@ debouncedWatch(
     // Mode 1: loop through all records to find EXACT match (not using mini search)
     if (mode === 'exact') {
       if (filterTextValue.length > 1) {
-        const regex = new RegExp(old2New(filterTextValue))
-        results.value = (
-          index.search(MiniSearch.wildcard) as (SearchResult & Result)[]
-        ).filter((i) => {
-          return regex.test(processTerm(i.title || ''))
-        })
-        enableNoResults.value = true
+        try {
+          const regex = new RegExp(old2New(filterTextValue))
+          results.value = (
+            index.search(MiniSearch.wildcard) as (SearchResult & Result)[]
+          ).filter((i) => {
+            return regex.test(processTerm(i.title || ''))
+          })
+        } catch {
+          results.value = []
+        }
       } else {
         results.value = []
-        enableNoResults.value = false
       }
     }
     // Mode 2: normal mini search
@@ -200,8 +202,8 @@ debouncedWatch(
       results.value = index
         .search(filterTextValue)
         .slice(0, 100) as (SearchResult & Result)[]
-      enableNoResults.value = true
     }
+    enableNoResults.value = true
 
     // Highlighting
     const mods = showDetailedListValue
@@ -437,16 +439,21 @@ function resetSearch() {
 
 function formMarkRegex(terms: Set<string>, filterTextValue: string) {
   if (searchMode.value === 'exact') {
-    return new RegExp(
-      filterTextValue
-        .split('')
-        .map((i) => {
-          if (new2OldMap[i]) return `[${i}${new2OldMap[i]}]`
-          if (old2NewMap[i]) return `[${i}${old2NewMap[i]}]`
-          return i
-        })
-        .join('')
-    )
+    try {
+      return new RegExp(
+        filterTextValue
+          .split('')
+          .map((i) => {
+            if (new2OldMap[i]) return `[${i}${new2OldMap[i]}]`
+            if (old2NewMap[i]) return `[${i}${old2NewMap[i]}]`
+            return i
+          })
+          .join('')
+      )
+    } catch {
+      // matches nothing
+      return /$^/
+    }
   }
   return new RegExp(
     [...terms]
@@ -556,16 +563,6 @@ function formMarkRegex(terms: Set<string>, filterTextValue: string) {
             :checked="searchMode === 'exact'"
             @checked="searchMode = 'exact'"
           />
-          <p
-            class="keyword-length-error"
-            v-if="
-              filterText.length > 0 &&
-              filterText.length < 2 &&
-              searchMode === 'exact'
-            "
-          >
-            二文字以上入力してください
-          </p>
         </div>
 
         <ul
@@ -623,10 +620,15 @@ function formMarkRegex(terms: Set<string>, filterTextValue: string) {
             v-if="filterText && !results.length && enableNoResults"
             class="no-results"
           >
-            {{ translate('modal.noResultsText') }} "<strong>{{
-              filterText
-            }}</strong
-            >"
+            <span v-if="filterText.length === 1 && searchMode === 'exact'">
+              二文字以上入力してください
+            </span>
+            <span v-else>
+              {{ translate('modal.noResultsText') }} "<strong>{{
+                filterText
+              }}</strong
+              >"
+            </span>
           </li>
         </ul>
 
@@ -782,10 +784,6 @@ function formMarkRegex(terms: Set<string>, filterTextValue: string) {
 
 .search-mode {
   margin: -8px 0;
-  .keyword-length-error {
-    color: var(--vp-c-red-2);
-    font-size: 0.9rem;
-  }
 }
 
 .search-keyboard-shortcuts {
