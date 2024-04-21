@@ -241,7 +241,7 @@ function createMdForIndexing(
 ) {
   const buffer: string[] = []
 
-  buffer.push(`## ${p.name}`)
+  buffer.push(`## ${p.name2 || p.name}`)
 
   p.groups.forEach((g) => {
     if (g.name) {
