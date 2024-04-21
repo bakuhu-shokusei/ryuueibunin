@@ -88,6 +88,10 @@ const searchIndex = computedAsync(async () =>
           boost: { title: 4, text: 2, titles: 1 },
           ...(theme.value.search?.provider === 'local' &&
             theme.value.search.options?.miniSearch?.searchOptions),
+          tokenize(s: string) {
+            s = s.replace(/　/g, ' ') // replace 全角space with normal space
+            return tokenize(s)
+          },
         },
         tokenize,
         processTerm,
