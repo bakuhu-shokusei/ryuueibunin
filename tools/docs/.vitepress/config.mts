@@ -64,6 +64,9 @@ export default defineConfig({
             tokenize,
             processTerm,
           },
+          searchOptions: {
+            combineWith: 'AND',
+          },
         },
         detailedView: false,
         translations: {

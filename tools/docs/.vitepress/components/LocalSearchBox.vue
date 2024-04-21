@@ -272,9 +272,15 @@ debouncedWatch(
     await new Promise((r) => {
       mark.value?.unmark({
         done: () => {
-          mark.value?.markRegExp(formMarkRegex(terms, filterTextValue), {
-            done: r,
-          })
+          mark.value?.markRegExp(
+            formMarkRegex(
+              terms,
+              results.value.length > 0 ? filterTextValue : '&^'
+            ),
+            {
+              done: r,
+            }
+          )
         },
       })
     })
