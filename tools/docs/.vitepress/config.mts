@@ -16,9 +16,9 @@ const sidebar = JSON.parse(
 export default defineConfig({
   lang: 'ja-JP',
   title: '柳営補任',
-  base: '/edo-jinji/',
+  base: '/ryuueibunin/',
   description: '江戸幕府諸役人の任免記録',
-  head: [['link', { rel: 'icon', href: '/edo-jinji/favicon.ico' }]],
+  head: [['link', { rel: 'icon', href: '/ryuueibunin/favicon.ico' }]],
   themeConfig: {
     nav: [
       {
@@ -50,7 +50,7 @@ export default defineConfig({
       label: '目次',
     },
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/Shenmin-Z/edo-jinji' },
+      { icon: 'github', link: 'https://github.com/bakuhu-shokusei/ryuueibunin' },
     ],
     docFooter: {
       prev: '前のページ',
