@@ -9,11 +9,11 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
 export const books = yaml.load(
-  readFileSync(resolve(__dirname, '../../index.yml')).toString()
+  readFileSync(resolve(__dirname, '../../content/index.yml')).toString()
 ) as Book[]
 export function readMember(file: string) {
   return yaml.load(
-    readFileSync(resolve(__dirname, `../../${file}`)).toString()
+    readFileSync(resolve(__dirname, `../../content/${file}`)).toString()
   ) as Member[]
 }
 
@@ -72,7 +72,7 @@ function reverseSearch(path: Path): IndexPath[] {
 
 function writeBack() {
   writeFileSync(
-    resolve(__dirname, '../../index.yml'),
+    resolve(__dirname, '../../content/index.yml'),
     '# yaml-language-server: $schema=tools/schema/books.json\n' + dump(books)
   )
 }

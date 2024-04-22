@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
-const indexPath = resolve(__dirname, '../../index.txt')
+const indexPath = resolve(__dirname, '../../content/index.txt')
 
 export interface Position {
   bookNumber: number

@@ -78,7 +78,7 @@ function writeMembers(record) {
 }
 
 function convert() {
-  const books = yaml.load(readFileSync(resolve(__dirname, '../index.yml')))
+  const books = yaml.load(readFileSync(resolve(__dirname, '../content/index.yml')))
   const recordsBooks = []
   const recordsPositions = []
 
@@ -101,7 +101,7 @@ function convert() {
       }
       for (const group of position.groups) {
         const members = yaml.load(
-          readFileSync(resolve(__dirname, '../', group.members))
+          readFileSync(resolve(__dirname, '../content/', group.members))
         )
         if (members.length === 0) continue
         const g = {

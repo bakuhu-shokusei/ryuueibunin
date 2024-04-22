@@ -27,6 +27,9 @@
           "name2": {
             "type": "string"
           },
+          "name3": {
+            "type": "string"
+          },
           "note": {
             "type": "array",
             "items": {
@@ -73,9 +76,12 @@
                   "items": {
                     "type": "string"
                   }
+                },
+                "id": {
+                  "type": "string"
                 }
               },
-              "required": ["members"],
+              "required": ["members", "id"],
               "additionalProperties": false
             }
           }

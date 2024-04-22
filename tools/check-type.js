@@ -17,7 +17,7 @@ const validateBook = ajv.compile(bookSchema)
 const validateMember = ajv.compile(memberSchema)
 
 export function validateSchema() {
-  const books = yaml.load(readFileSync(resolve(__dirname, '../index.yml')))
+  const books = yaml.load(readFileSync(resolve(__dirname, '../content/index.yml')))
   if (!Array.isArray(books)) {
     throw 'Need an array of books!'
   }
@@ -32,7 +32,7 @@ export function validateSchema() {
       for (const position of book.positions) {
         for (const group of position.groups) {
           const members = group.members
-          const path = resolve(__dirname, '../', members)
+          const path = resolve(__dirname, '../content', members)
           if (!existsSync(path)) {
             console.log(book.book, chalk.red(members), ' not exist!')
             return false
