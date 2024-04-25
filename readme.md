@@ -2,7 +2,7 @@
 
 東京大学史料編纂所が提供している「大日本近世史料　柳営補任」の版面画像をウェブサイトにしたプロジェクトです。
 
-クリエイティブ・コモンズ・ライセンスの「CC BY-NC-SA」（[クリエイティブ・コモンズ　表示 - 非営利 - 継承 4.0 国際ライセンス](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja)）の元で提供されている画像をOCRテキストかし、検索できるようにしたものです。
+クリエイティブ・コモンズ・ライセンスの「CC BY-NC-SA」（[クリエイティブ・コモンズ　表示 - 非営利 - 継承 4.0 国際ライセンス](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja)）の元で提供されている画像をOCRテキスト化し、検索できるようにしたものです。
 
 [ウェブサイトURL](https://bakuhu-shokusei.github.io/ryuueibunin/)
 
