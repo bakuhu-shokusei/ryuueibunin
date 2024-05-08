@@ -1,6 +1,12 @@
 import { mkdirSync, rmSync, writeFileSync } from 'node:fs'
 import { books, readMember } from './search.js'
-import { Entity, Position, index } from './parseIndex.js'
+import {
+  Entity,
+  Position,
+  index,
+  newNames,
+  newNameMapping,
+} from './parseIndex.js'
 import { compareTwoStrings } from 'string-similarity'
 import { Book } from './type.js'
 
@@ -297,7 +303,20 @@ function createIndex() {
 }
 
 function renderEntity(entity: Entity, parentName = ''): string {
-  let result = `${entity.name}`
+  // xxx=yyy
+  if (entity.name2) {
+    if (newNameMapping[entity.name2]) {
+      return `${entity.name} → [${entity.name2}](./#${encodeURIComponent(
+        newNameMapping[entity.name2]
+      )})\n`
+    } else {
+      return `${entity.name} → ${entity.name2}\n`
+    }
+  }
+
+  let result = newNames.has(entity.name)
+    ? `<span id="${entity.name}">${entity.name}</span>`
+    : `${entity.name}`
   if (entity.positions) {
     result = [result]
       .concat(
@@ -339,9 +358,7 @@ function position2Link(position: Position, name: string): string {
 
     const createHash = (hash: string) => {
       if (count[hash] > 1) hash += `-${count[hash] - 1}`
-      return `/content/${r.kan}/${r.path}#${encodeURIComponent(
-        hash.replace(/(\s|\(|\))/g, '-')
-      )}`
+      return `/content/${r.kan}/${r.path}#${encodeHash(hash)}`
     }
     for (const p of r.positions) {
       count[p.name] = (count[p.name] ?? 0) + 1
@@ -386,6 +403,10 @@ function position2Link(position: Position, name: string): string {
     }
   }
   return candidates.sort((a, b) => b.similarity - a.similarity)[0].link
+}
+
+function encodeHash(s: string) {
+  return encodeURIComponent(s.replace(/(\s|\(|\))/g, '-'))
 }
 
 createNavs()

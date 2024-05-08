@@ -13,6 +13,7 @@ export interface Position {
 
 export interface Entity {
   name: string
+  name2?: string
   positions?: Position[]
   children?: Entity[]
 }
@@ -25,37 +26,46 @@ function readIndexFile(): string {
   return readFileSync(indexPath).toString()
 }
 
-function parseString(content: string): Indexes {
+function parseString(content: string): {
+  indexes: Indexes
+  newNames: Set<string>
+} {
   const result: Indexes = {}
-  const names: Record<string, string> = {}
   const lines = content.split('\n')
+  const newNames = new Set<string>()
 
   let kana = ''
   let parent: Entity | undefined = undefined
 
   lines.forEach((line) => {
     line = line.trimEnd()
+
+    // empty line: reset
     if (line.length === 0) {
       kana = ''
       parent = undefined
       return
     }
+
+    // あいうえお
     if (/^[\u3040-\u309F]+$/.test(line)) {
       kana = line
       return
     }
-    const [name, pageInfo] = line.trim().split(' ')
+
+    let [name, pageInfo] = line.trim().split(' ')
     const entity: Entity = {
       name,
     }
     if (name.includes('=')) {
       const [a, b] = name.split('=')
+      entity.name = a
+      entity.name2 = b
       const filter = (s: string) => {
-        return s && !s.startsWith('家')
+        return s && !s.startsWith('家') && s !== '伽'
       }
       if (filter(a) && filter(b)) {
-        names[a] = b
-        names[b] = a
+        newNames.add(b)
       }
     }
 
@@ -73,25 +83,7 @@ function parseString(content: string): Indexes {
     }
   })
 
-  // const all = Object.values(result).flat()
-  // all.forEach((e) => {
-  //   const [x, y] = e.name.split('=')
-  //   if (x && y) {
-  //     const match = all.find((i) => i.name === y)
-  //     if (match) {
-  //       e.name = `${x}(${y})`
-  //       e.positions = match.positions
-  //       e.children = match.children
-  //     }
-  //   }
-  // })
-  // all.forEach((e) => {
-  //   if (names[e.name]) {
-  //     e.name += `=${names[e.name]}`
-  //   }
-  // })
-
-  return result
+  return { indexes: result, newNames }
 }
 
 function parsePageInfo(s: string): Position[] {
@@ -105,11 +97,29 @@ function parsePageInfo(s: string): Position[] {
   })
 }
 
-function parse(): Indexes {
-  return parseString(readIndexFile())
+function parse(): {
+  indexes: Indexes
+  newNames: Set<string>
+  newNameMapping: Record<string, string>
+} {
+  const { indexes, newNames } = parseString(readIndexFile())
+  const _newNames = new Set<string>()
+  const newNameMapping: Record<string, string> = {}
+  Object.values(indexes)
+    .flat()
+    .forEach((e) => {
+      if (e.name2) return
+      const name = e.name.split('(')[0]
+      if (newNames.has(name)) {
+        _newNames.add(e.name)
+        newNameMapping[name] = e.name
+      }
+    })
+  return { indexes, newNames: _newNames, newNameMapping }
 }
 
-export const index = parse()
+const { indexes: index, newNames, newNameMapping } = parse()
+export { index, newNames, newNameMapping }
 export type IndexPath = [string, number, number?] // e.g. あ, 2, 1
 const reverseIndex: Record<string, IndexPath[]> = {}
 Object.entries(index).forEach(([kana, entities]) => {
