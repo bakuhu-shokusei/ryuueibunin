@@ -258,12 +258,22 @@ function createMdForIndexing(
     if (members.length > 0) {
       members.forEach((m) => {
         const hash = getId()
-        buffer.push(`#### ${m.info.join(' ')} {#row-${hash}}`)
+        buffer.push(
+          `#### ${m.info.map(replaceBrackets).join(' ')} {#row-${hash}}`
+        )
       })
     }
   })
 
   return buffer.join('\n\n')
+}
+
+// abcd〔e〕→abce
+function replaceBrackets(s: string): string {
+  return s
+    .replace(/[^\s]〔([^〕])〕/g, '$1')
+    .replace(/(〔|〕|\(|\))/g, ' ')
+    .replace(/\s+/g, ' ')
 }
 
 function createNavs() {
