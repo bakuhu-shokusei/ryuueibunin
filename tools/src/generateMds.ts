@@ -8,6 +8,7 @@ import {
   newNameMapping,
 } from './parseIndex.js'
 import { compareTwoStrings } from 'string-similarity'
+import { transformNote } from './textTransform/index.js'
 import { Book } from './type.js'
 
 import { resolve, dirname } from 'node:path'
@@ -149,7 +150,7 @@ function writeMdFiles() {
           [
             '---',
             `title: ${namesSeparatedBySpace}`,
-            'pageClass: no-h1-allowed',
+            'pageClass: position-members',
             '---',
           ].join('\n'),
           ...i.positions.map((p) => createMd(p, () => ++start)),
@@ -214,16 +215,26 @@ ${g.opening.join('<br>\n')}
       const table: string[] = []
       table.push('| # | 任免 | 姓名 |')
       table.push('| :--- | :--- | ---: |')
-      function createTableData(s: string[] | undefined): string {
+      function createTableData(
+        s: string[] | undefined,
+        type: 'note' | 'info'
+      ): string {
         if (!s) return ''
-        return s.map((i) => i.replace(/(?<!\\)\|/g, '\\|')).join('<br>')
+        return s
+          .map((i) => {
+            if (type === 'note') {
+              i = transformNote(i)
+            }
+            return i.replace(/(?<!\\)\|/g, '\\|')
+          })
+          .join('<br>')
       }
       members.forEach((m) => {
         const hash = getId()
+        const tdNote = createTableData(m.note, 'note')
+        const tdInfo = createTableData(m.info, 'info')
         table.push(
-          `| <a class="table-item-anchor" id="row-${hash}" href="#row-${hash}">${hash}</a> | ${createTableData(
-            m.note
-          )} | ${createTableData(m.info)} |`
+          `| <a class="table-item-anchor" id="row-${hash}" href="#row-${hash}">${hash}</a> | ${tdNote} | ${tdInfo} |`
         )
       })
       buffer.push(table.join('\n'))

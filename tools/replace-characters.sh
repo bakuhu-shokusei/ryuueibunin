@@ -50,3 +50,20 @@ git diff --name-only --cached | xargs -i \
 # fd -e txt -e yml -x sed -i -E "s|⭕||g" 
 # fd -e txt -e yml -x sd 冣 㝡 {} 
 #𛀁|江|に|囘|司|兀|達|目$|\s\d\d\d|月日|〓|月卒|月辭|𢌞|釵|5|\n\n\n
+
+# fd -e txt -e yml -x sed -i -E 's/寬永/寛永/g
+#   s/承応/承應/g
+#   s/明暦/明曆/g
+#   s/万治/萬治/g
+#   s/寬文/寛文/g
+#   s/延宝/延寶/g
+#   s/元禄/元祿/g
+#   s/宝永/寶永/g
+#   s/正徳/正德/g
+#   s/寬保/寛保/g
+#   s/寬延/寛延/g
+#   s/宝暦/寶曆/g
+#   s/寬政/寛政/g
+#   s/万延/萬延/g
+#   s/慶応/慶應/g
+#   '

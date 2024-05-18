@@ -1,10 +1,23 @@
-.no-h1-allowed h2:first-of-type {
+/* no h1 can be used */
+.position-members h2:first-of-type {
   margin-top: 0;
   border-top: none;
   padding-top: 0;
   .header-anchor {
     top: 0;
   }
+}
+
+.position-members .ja-year {
+  border-bottom: 1px dashed var(--vp-c-text-1);
+}
+
+.position-members .uni-year {
+  color: var(--vp-c-text-2);
+}
+
+.position-members .uni-year.not-match {
+  color: var(--vp-c-text-3);
 }
 
 a.table-item-anchor {
